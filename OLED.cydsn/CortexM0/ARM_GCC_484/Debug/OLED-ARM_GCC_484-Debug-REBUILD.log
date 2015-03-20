@@ -1,0 +1,3 @@
+--------------- Rebuild Started: 03/13/2015 17:57:02 Project: ssd1306.c, Configuration: ARM GCC 4.8.4 Debug ---------------
+arm-none-eabi-gcc.exe -mcpu=cortex-m0 -mthumb -Wno-main -I. -I.\Generated_Source\PSoC4 -Wa,-alh=.\CortexM0\ARM_GCC_484\Debug/ssd1306.lst -g -D DEBUG -Wall -ffunction-sections -O0 -c .\ssd1306.c -o .\CortexM0\ARM_GCC_484\Debug\ssd1306.o
+--------------- Rebuild Succeeded: 03/13/2015 17:57:03 ---------------

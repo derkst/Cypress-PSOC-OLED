@@ -1,0 +1,33 @@
+SSD1306 OLED I2C driver
+
+Derk Steggewentz, 3/2015 
+
+This is a I2C driver for SSD1306 OLED displays including graphics library. The project as is runs on the PSOC pioneer kit.
+
+The graphics library part (gfx_ functions) is a heavily modified version of the Adafruit graphics library,
+
+No license restrictions on my part, do whatever you want as long as you follow the derived license requirements for the graphics library part.
+
+Usage:
+
+
+- Choose the 2 pins to be used for the I2C bus and connect the display to it and VCC/GND.
+
+- Don’t forget to add pull-up resistors to SDA and SCL (something like 2.2k to 10k)
+
+- configure OLED.cydwr for the I2C pins used
+- build/program/run project
+
+- Initialize display, see example code in main.c
+
+Examples:
+
+
+- see main.c for example usage
+
+
+see ssd1306.h for the entire API
+
+
+
+

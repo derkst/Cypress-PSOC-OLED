@@ -1,0 +1,11 @@
+--------------- Build Started: 03/18/2015 23:37:18 Project: OLED, Configuration: ARM GCC 4.8.4 Debug ---------------
+The code generation step is up to date.
+arm-none-eabi-gcc.exe -mcpu=cortex-m0 -mthumb -Wno-main -I. -I.\Generated_Source\PSoC4 -Wa,-alh=.\CortexM0\ARM_GCC_484\Debug/ssd1306.lst -g -D DEBUG -Wall -ffunction-sections -O0 -c .\ssd1306.c -o .\CortexM0\ARM_GCC_484\Debug\ssd1306.o
+arm-none-eabi-ar.exe -rs .\CortexM0\ARM_GCC_484\Debug\OLED.a .\CortexM0\ARM_GCC_484\Debug\cyfitter_cfg.o .\CortexM0\ARM_GCC_484\Debug\I2COLED.o .\CortexM0\ARM_GCC_484\Debug\I2COLED_I2C_INT.o .\CortexM0\ARM_GCC_484\Debug\I2COLED_I2C.o .\CortexM0\ARM_GCC_484\Debug\I2COLED_I2C_BOOT.o .\CortexM0\ARM_GCC_484\Debug\I2COLED_I2C_MASTER.o .\CortexM0\ARM_GCC_484\Debug\I2COLED_PM.o .\CortexM0\ARM_GCC_484\Debug\I2COLED_BOOT.o .\CortexM0\ARM_GCC_484\Debug\I2COLED_SCBCLK.o .\CortexM0\ARM_GCC_484\Debug\I2COLED_sda.o .\CortexM0\ARM_GCC_484\Debug\I2COLED_scl.o .\CortexM0\ARM_GCC_484\Debug\I2COLED_SCB_IRQ.o .\CortexM0\ARM_GCC_484\Debug\CyBootAsmGnu.o .\CortexM0\ARM_GCC_484\Debug\CyFlash.o .\CortexM0\ARM_GCC_484\Debug\CyLib.o .\CortexM0\ARM_GCC_484\Debug\cyPm.o .\CortexM0\ARM_GCC_484\Debug\cyutils.o
+arm-none-eabi-ar.exe: creating .\CortexM0\ARM_GCC_484\Debug\OLED.a
+arm-none-eabi-gcc.exe -Wl,--start-group -o .\CortexM0\ARM_GCC_484\Debug\OLED.elf .\CortexM0\ARM_GCC_484\Debug\main.o .\CortexM0\ARM_GCC_484\Debug\ssd1306.o .\CortexM0\ARM_GCC_484\Debug\cymetadata.o .\CortexM0\ARM_GCC_484\Debug\Cm0Start.o .\CortexM0\ARM_GCC_484\Debug\OLED.a "C:\Program Files\Cypress\PSoC Creator\3.1\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CortexM0\ARM_GCC_484\Debug\CyComponentLibrary.a" -mthumb -march=armv6-m -Wl,-Map,.\CortexM0\ARM_GCC_484\Debug/OLED.map -T .\Generated_Source\PSoC4\cm0gcc.ld -g -specs=nano.specs "-u _printf_float" "" -Wl,--gc-sections -Wl,--end-group
+cyelftool.exe -C C:\dev\Cypress\Testbench\OLED.cydsn\CortexM0\ARM_GCC_484\Debug\OLED.elf --flash_size 32768 --flash_row_size 128
+cyelftool.exe -S C:\dev\Cypress\Testbench\OLED.cydsn\CortexM0\ARM_GCC_484\Debug\OLED.elf
+Flash used: 14160 of 32768 bytes (43.2 %).
+SRAM used: 2508 of 4096 bytes (61.2 %). Stack: 1024 bytes. Heap: 128 bytes.
+--------------- Build Succeeded: 03/18/2015 23:37:23 ---------------

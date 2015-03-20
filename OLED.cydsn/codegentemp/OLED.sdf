@@ -1,0 +1,25 @@
+(DELAYFILE
+ (SDFVERSION "IEEE 1497 4.0")
+ (DATE "2015-03-17T17:28:06Z")
+ (DESIGN "OLED")
+ (VENDOR "Cypress Semiconductor")
+ (PROGRAM "PSoC Creator")
+ (VERSION " 3.1 Component Pack 1")
+ (DIVIDER .)
+ (TIMESCALE 1 ns)
+ (CELL
+  (CELLTYPE "OLED")
+  (INSTANCE *)
+  (DELAY
+   (ABSOLUTE
+    (INTERCONNECT ClockBlock.hfclk \\I2COLED\:SCB_IRQ\\.clock (0.000:0.000:0.000))
+    (INTERCONNECT \\I2COLED\:SCB\\.interrupt \\I2COLED\:SCB_IRQ\\.interrupt (1.000:1.000:1.000))
+    (INTERCONNECT \\I2COLED\:scl\(0\)\\.fb \\I2COLED\:SCB\\.scl (0.000:0.000:0.000))
+    (INTERCONNECT \\I2COLED\:sda\(0\)\\.fb \\I2COLED\:SCB\\.sda (0.000:0.000:0.000))
+    (INTERCONNECT ClockBlock.ff_div_3 \\I2COLED\:SCB\\.clock (0.000:0.000:0.000))
+    (INTERCONNECT \\I2COLED\:scl\(0\)_PAD\\ \\I2COLED\:scl\(0\)\\.pad_in (0.000:0.000:0.000))
+    (INTERCONNECT \\I2COLED\:sda\(0\)_PAD\\ \\I2COLED\:sda\(0\)\\.pad_in (0.000:0.000:0.000))
+   )
+  )
+ )
+)

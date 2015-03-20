@@ -1,0 +1,14 @@
+C:\dev\Cypress\First Steps\Blinking LED ssop.cydsn\Blinking LED ssop.cyprj|a89e83ca-b834-49e7-b5a7-542321a0edd9
+C:\Program Files\Cypress\PSoC Creator\3.1\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|f38ceacb-8cc1-4094-8597-04739c8193d4
+C:\Program Files\Cypress\PSoC Creator\3.1\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|acdf67d0-e9df-476f-ae87-dc6eee5ce8c8
+C:\Program Files\Cypress\PSoC Creator\3.1\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|5111ddbf-fee7-4a3d-a6e6-f2dbc8f0eb08
+C:\Program Files\Cypress\PSoC Creator\3.1\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|a2b6a3db-c45f-4e92-a90d-7d7bd076b90e
+C:\Program Files\Cypress\PSoC Creator\3.1\PSoC Creator\psoc\content\default\CyReferenceLibrary\CyReferenceLibrary.cylib\CyReferenceLibrary.cyprj|9075d891-6f60-4668-8d8d-9062b65f1f67
+C:\dev\Cypress\Testbench\ssop\WiseSSOP01.cydsn\WiseSSOP01.cyprj|f130615d-ebbb-44ce-b2df-170e3078a2e4
+C:\dev\Cypress\PSOC\MyWorkspaces\WiSe\wise00.cydsn\wise00.cyprj|1afa3492-0d59-4214-845b-bf0b6172e28b
+C:\dev\Cypress\Testbench\ssop\WiseSSOP_Tester.cydsn\WiseSSOP_Tester.cyprj|9933016b-b6f0-47e6-8a47-57c407a5c2c0
+C:\dev\Cypress\Testbench\I2C_LCD_Example_PSoC401.cydsn\I2C_LCD_Example_PSoC401.cyprj|a63c90ff-37c0-449b-9168-3993bccc62f8
+C:\dev\Cypress\Testbench\OLED.cydsn\OLED.cyprj|66b47e87-e4ec-48dc-916a-712706edfca3
+C:\dev\Cypress\Testbench\SCB_I2cCommMaster01.cydsn\SCB_I2cCommMaster01.cyprj|62b2cf24-ecb5-4747-9027-3e1c0130568c
+C:\dev\Cypress\Testbench\SCB_I2cCommSlave01.cydsn\SCB_I2cCommSlave01.cyprj|b6b2fa5f-da44-4d86-8514-9b5ce743484e
+C:\dev\Cypress\Testbench\USB-I2C.cydsn\USB-I2C.cyprj|47ed8f99-dc56-4d61-ac9a-0e4a6e26e1a5

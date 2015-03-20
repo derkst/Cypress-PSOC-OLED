@@ -1,0 +1,1 @@
+'C:\dev\Cypress\Testbench\OLED.cydsn\Generated_Source\PSoC4\I2COLED_I2C_BOOT.c' -o .o -T ARM_C_FILE -I 'C:\dev\Cypress\Testbench\OLED.cydsn' -I 'C:\dev\Cypress\Testbench\OLED.cydsn\Generated_Source\PSoC4' -f 'C:\dev\Cypress\Testbench\OLED.cydsn\CortexM0\ARM_GCC_484\Debug\.deps\ARM_C_FILE.d'

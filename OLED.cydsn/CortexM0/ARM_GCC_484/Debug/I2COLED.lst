@@ -1,0 +1,2009 @@
+ARM GAS  C:\DOCUME~1\Owner\LOCALS~1\Temp\ccwmnyAP.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 6
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"I2COLED.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.global	I2COLED_initVar
+  18              		.bss
+  19              		.type	I2COLED_initVar, %object
+  20              		.size	I2COLED_initVar, 1
+  21              	I2COLED_initVar:
+  22 0000 00       		.space	1
+  23              		.global	I2COLED_customIntrHandler
+  24 0001 000000   		.align	2
+  25              		.type	I2COLED_customIntrHandler, %object
+  26              		.size	I2COLED_customIntrHandler, 4
+  27              	I2COLED_customIntrHandler:
+  28 0004 00000000 		.space	4
+  29              		.section	.text.I2COLED_Init,"ax",%progbits
+  30              		.align	2
+  31              		.global	I2COLED_Init
+  32              		.code	16
+  33              		.thumb_func
+  34              		.type	I2COLED_Init, %function
+  35              	I2COLED_Init:
+  36              	.LFB0:
+  37              		.file 1 ".\\Generated_Source\\PSoC4\\I2COLED.c"
+   1:.\Generated_Source\PSoC4/I2COLED.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC4/I2COLED.c **** * File Name: I2COLED.c
+   3:.\Generated_Source\PSoC4/I2COLED.c **** * Version 2.0
+   4:.\Generated_Source\PSoC4/I2COLED.c **** *
+   5:.\Generated_Source\PSoC4/I2COLED.c **** * Description:
+   6:.\Generated_Source\PSoC4/I2COLED.c **** *  This file provides the source code to the API for the SCB Component.
+   7:.\Generated_Source\PSoC4/I2COLED.c **** *
+   8:.\Generated_Source\PSoC4/I2COLED.c **** * Note:
+   9:.\Generated_Source\PSoC4/I2COLED.c **** *
+  10:.\Generated_Source\PSoC4/I2COLED.c **** *******************************************************************************
+  11:.\Generated_Source\PSoC4/I2COLED.c **** * Copyright 2013-2014, Cypress Semiconductor Corporation.  All rights reserved.
+  12:.\Generated_Source\PSoC4/I2COLED.c **** * You may use this file only in accordance with the license, terms, conditions,
+  13:.\Generated_Source\PSoC4/I2COLED.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  14:.\Generated_Source\PSoC4/I2COLED.c **** * the software package with which this file was provided.
+  15:.\Generated_Source\PSoC4/I2COLED.c **** *******************************************************************************/
+  16:.\Generated_Source\PSoC4/I2COLED.c **** 
+  17:.\Generated_Source\PSoC4/I2COLED.c **** #include "I2COLED_PVT.h"
+  18:.\Generated_Source\PSoC4/I2COLED.c **** 
+  19:.\Generated_Source\PSoC4/I2COLED.c **** #if(I2COLED_SCB_MODE_I2C_INC)
+  20:.\Generated_Source\PSoC4/I2COLED.c ****     #include "I2COLED_I2C_PVT.h"
+ARM GAS  C:\DOCUME~1\Owner\LOCALS~1\Temp\ccwmnyAP.s 			page 2
+
+
+  21:.\Generated_Source\PSoC4/I2COLED.c **** #endif /* (I2COLED_SCB_MODE_I2C_INC) */
+  22:.\Generated_Source\PSoC4/I2COLED.c **** 
+  23:.\Generated_Source\PSoC4/I2COLED.c **** #if(I2COLED_SCB_MODE_EZI2C_INC)
+  24:.\Generated_Source\PSoC4/I2COLED.c ****     #include "I2COLED_EZI2C_PVT.h"
+  25:.\Generated_Source\PSoC4/I2COLED.c **** #endif /* (I2COLED_SCB_MODE_EZI2C_INC) */
+  26:.\Generated_Source\PSoC4/I2COLED.c **** 
+  27:.\Generated_Source\PSoC4/I2COLED.c **** #if(I2COLED_SCB_MODE_SPI_INC || I2COLED_SCB_MODE_UART_INC)
+  28:.\Generated_Source\PSoC4/I2COLED.c ****     #include "I2COLED_SPI_UART_PVT.h"
+  29:.\Generated_Source\PSoC4/I2COLED.c **** #endif /* (I2COLED_SCB_MODE_SPI_INC || I2COLED_SCB_MODE_UART_INC) */
+  30:.\Generated_Source\PSoC4/I2COLED.c **** 
+  31:.\Generated_Source\PSoC4/I2COLED.c **** 
+  32:.\Generated_Source\PSoC4/I2COLED.c **** /***************************************
+  33:.\Generated_Source\PSoC4/I2COLED.c **** *    Run Time Configuration Vars
+  34:.\Generated_Source\PSoC4/I2COLED.c **** ***************************************/
+  35:.\Generated_Source\PSoC4/I2COLED.c **** 
+  36:.\Generated_Source\PSoC4/I2COLED.c **** /* Stores internal component configuration for Unconfigured mode */
+  37:.\Generated_Source\PSoC4/I2COLED.c **** #if(I2COLED_SCB_MODE_UNCONFIG_CONST_CFG)
+  38:.\Generated_Source\PSoC4/I2COLED.c ****     /* Common configuration variables */
+  39:.\Generated_Source\PSoC4/I2COLED.c ****     uint8 I2COLED_scbMode = I2COLED_SCB_MODE_UNCONFIG;
+  40:.\Generated_Source\PSoC4/I2COLED.c ****     uint8 I2COLED_scbEnableWake;
+  41:.\Generated_Source\PSoC4/I2COLED.c ****     uint8 I2COLED_scbEnableIntr;
+  42:.\Generated_Source\PSoC4/I2COLED.c **** 
+  43:.\Generated_Source\PSoC4/I2COLED.c ****     /* I2C configuration variables */
+  44:.\Generated_Source\PSoC4/I2COLED.c ****     uint8 I2COLED_mode;
+  45:.\Generated_Source\PSoC4/I2COLED.c ****     uint8 I2COLED_acceptAddr;
+  46:.\Generated_Source\PSoC4/I2COLED.c **** 
+  47:.\Generated_Source\PSoC4/I2COLED.c ****     /* SPI/UART configuration variables */
+  48:.\Generated_Source\PSoC4/I2COLED.c ****     volatile uint8 * I2COLED_rxBuffer;
+  49:.\Generated_Source\PSoC4/I2COLED.c ****     uint8  I2COLED_rxDataBits;
+  50:.\Generated_Source\PSoC4/I2COLED.c ****     uint32 I2COLED_rxBufferSize;
+  51:.\Generated_Source\PSoC4/I2COLED.c **** 
+  52:.\Generated_Source\PSoC4/I2COLED.c ****     volatile uint8 * I2COLED_txBuffer;
+  53:.\Generated_Source\PSoC4/I2COLED.c ****     uint8  I2COLED_txDataBits;
+  54:.\Generated_Source\PSoC4/I2COLED.c ****     uint32 I2COLED_txBufferSize;
+  55:.\Generated_Source\PSoC4/I2COLED.c **** 
+  56:.\Generated_Source\PSoC4/I2COLED.c ****     /* EZI2C configuration variables */
+  57:.\Generated_Source\PSoC4/I2COLED.c ****     uint8 I2COLED_numberOfAddr;
+  58:.\Generated_Source\PSoC4/I2COLED.c ****     uint8 I2COLED_subAddrSize;
+  59:.\Generated_Source\PSoC4/I2COLED.c **** #endif /* (I2COLED_SCB_MODE_UNCONFIG_CONST_CFG) */
+  60:.\Generated_Source\PSoC4/I2COLED.c **** 
+  61:.\Generated_Source\PSoC4/I2COLED.c **** 
+  62:.\Generated_Source\PSoC4/I2COLED.c **** /***************************************
+  63:.\Generated_Source\PSoC4/I2COLED.c **** *     Common SCB Vars
+  64:.\Generated_Source\PSoC4/I2COLED.c **** ***************************************/
+  65:.\Generated_Source\PSoC4/I2COLED.c **** 
+  66:.\Generated_Source\PSoC4/I2COLED.c **** uint8 I2COLED_initVar = 0u;
+  67:.\Generated_Source\PSoC4/I2COLED.c **** 
+  68:.\Generated_Source\PSoC4/I2COLED.c **** #if !defined (CY_REMOVE_I2COLED_CUSTOM_INTR_HANDLER)
+  69:.\Generated_Source\PSoC4/I2COLED.c ****     cyisraddress I2COLED_customIntrHandler = NULL;
+  70:.\Generated_Source\PSoC4/I2COLED.c **** #endif /* !defined (CY_REMOVE_I2COLED_CUSTOM_INTR_HANDLER) */
+  71:.\Generated_Source\PSoC4/I2COLED.c **** 
+  72:.\Generated_Source\PSoC4/I2COLED.c **** 
+  73:.\Generated_Source\PSoC4/I2COLED.c **** /***************************************
+  74:.\Generated_Source\PSoC4/I2COLED.c **** *    Private Function Prototypes
+  75:.\Generated_Source\PSoC4/I2COLED.c **** ***************************************/
+  76:.\Generated_Source\PSoC4/I2COLED.c **** 
+  77:.\Generated_Source\PSoC4/I2COLED.c **** static void I2COLED_ScbEnableIntr(void);
+ARM GAS  C:\DOCUME~1\Owner\LOCALS~1\Temp\ccwmnyAP.s 			page 3
+
+
+  78:.\Generated_Source\PSoC4/I2COLED.c **** static void I2COLED_ScbModeStop(void);
+  79:.\Generated_Source\PSoC4/I2COLED.c **** 
+  80:.\Generated_Source\PSoC4/I2COLED.c **** 
+  81:.\Generated_Source\PSoC4/I2COLED.c **** /*******************************************************************************
+  82:.\Generated_Source\PSoC4/I2COLED.c **** * Function Name: I2COLED_Init
+  83:.\Generated_Source\PSoC4/I2COLED.c **** ********************************************************************************
+  84:.\Generated_Source\PSoC4/I2COLED.c **** *
+  85:.\Generated_Source\PSoC4/I2COLED.c **** * Summary:
+  86:.\Generated_Source\PSoC4/I2COLED.c **** *  Initializes the SCB component to operate in one of the selected
+  87:.\Generated_Source\PSoC4/I2COLED.c **** *  configurations: I2C, SPI, UART or EZI2C.
+  88:.\Generated_Source\PSoC4/I2COLED.c **** *  When the configuration is set to "Unconfigured SCB", this function does
+  89:.\Generated_Source\PSoC4/I2COLED.c **** *  not do any initialization. Use mode-specific initialization APIs instead:
+  90:.\Generated_Source\PSoC4/I2COLED.c **** *  SCB_I2CInit, SCB_SpiInit, SCB_UartInit or SCB_EzI2CInit.
+  91:.\Generated_Source\PSoC4/I2COLED.c **** *
+  92:.\Generated_Source\PSoC4/I2COLED.c **** * Parameters:
+  93:.\Generated_Source\PSoC4/I2COLED.c **** *  None
+  94:.\Generated_Source\PSoC4/I2COLED.c **** *
+  95:.\Generated_Source\PSoC4/I2COLED.c **** * Return:
+  96:.\Generated_Source\PSoC4/I2COLED.c **** *  None
+  97:.\Generated_Source\PSoC4/I2COLED.c **** *
+  98:.\Generated_Source\PSoC4/I2COLED.c **** *******************************************************************************/
+  99:.\Generated_Source\PSoC4/I2COLED.c **** void I2COLED_Init(void)
+ 100:.\Generated_Source\PSoC4/I2COLED.c **** {
+  38              		.loc 1 100 0
+  39              		.cfi_startproc
+  40 0000 80B5     		push	{r7, lr}
+  41              		.cfi_def_cfa_offset 8
+  42              		.cfi_offset 7, -8
+  43              		.cfi_offset 14, -4
+  44 0002 00AF     		add	r7, sp, #0
+  45              		.cfi_def_cfa_register 7
+ 101:.\Generated_Source\PSoC4/I2COLED.c **** #if(I2COLED_SCB_MODE_UNCONFIG_CONST_CFG)
+ 102:.\Generated_Source\PSoC4/I2COLED.c ****     if(I2COLED_SCB_MODE_UNCONFIG_RUNTM_CFG)
+ 103:.\Generated_Source\PSoC4/I2COLED.c ****     {
+ 104:.\Generated_Source\PSoC4/I2COLED.c ****         I2COLED_initVar = 0u;
+ 105:.\Generated_Source\PSoC4/I2COLED.c ****     }
+ 106:.\Generated_Source\PSoC4/I2COLED.c ****     else
+ 107:.\Generated_Source\PSoC4/I2COLED.c ****     {
+ 108:.\Generated_Source\PSoC4/I2COLED.c ****         /* Initialization was done before this function call */
+ 109:.\Generated_Source\PSoC4/I2COLED.c ****     }
+ 110:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 111:.\Generated_Source\PSoC4/I2COLED.c **** #elif(I2COLED_SCB_MODE_I2C_CONST_CFG)
+ 112:.\Generated_Source\PSoC4/I2COLED.c ****     I2COLED_I2CInit();
+  46              		.loc 1 112 0
+  47 0004 FFF7FEFF 		bl	I2COLED_I2CInit
+ 113:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 114:.\Generated_Source\PSoC4/I2COLED.c **** #elif(I2COLED_SCB_MODE_SPI_CONST_CFG)
+ 115:.\Generated_Source\PSoC4/I2COLED.c ****     I2COLED_SpiInit();
+ 116:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 117:.\Generated_Source\PSoC4/I2COLED.c **** #elif(I2COLED_SCB_MODE_UART_CONST_CFG)
+ 118:.\Generated_Source\PSoC4/I2COLED.c ****     I2COLED_UartInit();
+ 119:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 120:.\Generated_Source\PSoC4/I2COLED.c **** #elif(I2COLED_SCB_MODE_EZI2C_CONST_CFG)
+ 121:.\Generated_Source\PSoC4/I2COLED.c ****     I2COLED_EzI2CInit();
+ 122:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 123:.\Generated_Source\PSoC4/I2COLED.c **** #endif /* (I2COLED_SCB_MODE_UNCONFIG_CONST_CFG) */
+ 124:.\Generated_Source\PSoC4/I2COLED.c **** }
+ARM GAS  C:\DOCUME~1\Owner\LOCALS~1\Temp\ccwmnyAP.s 			page 4
+
+
+  48              		.loc 1 124 0
+  49 0008 BD46     		mov	sp, r7
+  50              		@ sp needed
+  51 000a 80BD     		pop	{r7, pc}
+  52              		.cfi_endproc
+  53              	.LFE0:
+  54              		.size	I2COLED_Init, .-I2COLED_Init
+  55              		.section	.text.I2COLED_Enable,"ax",%progbits
+  56              		.align	2
+  57              		.global	I2COLED_Enable
+  58              		.code	16
+  59              		.thumb_func
+  60              		.type	I2COLED_Enable, %function
+  61              	I2COLED_Enable:
+  62              	.LFB1:
+ 125:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 126:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 127:.\Generated_Source\PSoC4/I2COLED.c **** /*******************************************************************************
+ 128:.\Generated_Source\PSoC4/I2COLED.c **** * Function Name: I2COLED_Enable
+ 129:.\Generated_Source\PSoC4/I2COLED.c **** ********************************************************************************
+ 130:.\Generated_Source\PSoC4/I2COLED.c **** *
+ 131:.\Generated_Source\PSoC4/I2COLED.c **** * Summary:
+ 132:.\Generated_Source\PSoC4/I2COLED.c **** *  Enables the SCB component operation.
+ 133:.\Generated_Source\PSoC4/I2COLED.c **** *  The SCB configuration should be not changed when the component is enabled.
+ 134:.\Generated_Source\PSoC4/I2COLED.c **** *  Any configuration changes should be made after disabling the component.
+ 135:.\Generated_Source\PSoC4/I2COLED.c **** *
+ 136:.\Generated_Source\PSoC4/I2COLED.c **** * Parameters:
+ 137:.\Generated_Source\PSoC4/I2COLED.c **** *  None
+ 138:.\Generated_Source\PSoC4/I2COLED.c **** *
+ 139:.\Generated_Source\PSoC4/I2COLED.c **** * Return:
+ 140:.\Generated_Source\PSoC4/I2COLED.c **** *  None
+ 141:.\Generated_Source\PSoC4/I2COLED.c **** *
+ 142:.\Generated_Source\PSoC4/I2COLED.c **** *******************************************************************************/
+ 143:.\Generated_Source\PSoC4/I2COLED.c **** void I2COLED_Enable(void)
+ 144:.\Generated_Source\PSoC4/I2COLED.c **** {
+  63              		.loc 1 144 0
+  64              		.cfi_startproc
+  65 0000 80B5     		push	{r7, lr}
+  66              		.cfi_def_cfa_offset 8
+  67              		.cfi_offset 7, -8
+  68              		.cfi_offset 14, -4
+  69 0002 00AF     		add	r7, sp, #0
+  70              		.cfi_def_cfa_register 7
+ 145:.\Generated_Source\PSoC4/I2COLED.c **** #if(I2COLED_SCB_MODE_UNCONFIG_CONST_CFG)
+ 146:.\Generated_Source\PSoC4/I2COLED.c ****     /* Enable SCB block, only if it is already configured */
+ 147:.\Generated_Source\PSoC4/I2COLED.c ****     if(!I2COLED_SCB_MODE_UNCONFIG_RUNTM_CFG)
+ 148:.\Generated_Source\PSoC4/I2COLED.c ****     {
+ 149:.\Generated_Source\PSoC4/I2COLED.c ****         I2COLED_CTRL_REG |= I2COLED_CTRL_ENABLED;
+ 150:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 151:.\Generated_Source\PSoC4/I2COLED.c ****         I2COLED_ScbEnableIntr();
+ 152:.\Generated_Source\PSoC4/I2COLED.c ****     }
+ 153:.\Generated_Source\PSoC4/I2COLED.c **** #else
+ 154:.\Generated_Source\PSoC4/I2COLED.c ****     I2COLED_CTRL_REG |= I2COLED_CTRL_ENABLED;
+  71              		.loc 1 154 0
+  72 0004 054B     		ldr	r3, .L3
+  73 0006 054A     		ldr	r2, .L3
+  74 0008 1268     		ldr	r2, [r2]
+ARM GAS  C:\DOCUME~1\Owner\LOCALS~1\Temp\ccwmnyAP.s 			page 5
+
+
+  75 000a 8021     		mov	r1, #128
+  76 000c 0906     		lsl	r1, r1, #24
+  77 000e 0A43     		orr	r2, r1
+  78 0010 1A60     		str	r2, [r3]
+ 155:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 156:.\Generated_Source\PSoC4/I2COLED.c ****     I2COLED_ScbEnableIntr();
+  79              		.loc 1 156 0
+  80 0012 FFF7FEFF 		bl	I2COLED_ScbEnableIntr
+ 157:.\Generated_Source\PSoC4/I2COLED.c **** #endif /* (I2COLED_SCB_MODE_UNCONFIG_CONST_CFG) */
+ 158:.\Generated_Source\PSoC4/I2COLED.c **** }
+  81              		.loc 1 158 0
+  82 0016 BD46     		mov	sp, r7
+  83              		@ sp needed
+  84 0018 80BD     		pop	{r7, pc}
+  85              	.L4:
+  86 001a C046     		.align	2
+  87              	.L3:
+  88 001c 00000740 		.word	1074200576
+  89              		.cfi_endproc
+  90              	.LFE1:
+  91              		.size	I2COLED_Enable, .-I2COLED_Enable
+  92              		.section	.text.I2COLED_Start,"ax",%progbits
+  93              		.align	2
+  94              		.global	I2COLED_Start
+  95              		.code	16
+  96              		.thumb_func
+  97              		.type	I2COLED_Start, %function
+  98              	I2COLED_Start:
+  99              	.LFB2:
+ 159:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 160:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 161:.\Generated_Source\PSoC4/I2COLED.c **** /*******************************************************************************
+ 162:.\Generated_Source\PSoC4/I2COLED.c **** * Function Name: I2COLED_Start
+ 163:.\Generated_Source\PSoC4/I2COLED.c **** ********************************************************************************
+ 164:.\Generated_Source\PSoC4/I2COLED.c **** *
+ 165:.\Generated_Source\PSoC4/I2COLED.c **** * Summary:
+ 166:.\Generated_Source\PSoC4/I2COLED.c **** *  Invokes SCB_Init() and SCB_Enable().
+ 167:.\Generated_Source\PSoC4/I2COLED.c **** *  After this function call, the component is enabled and ready for operation.
+ 168:.\Generated_Source\PSoC4/I2COLED.c **** *  When configuration is set to "Unconfigured SCB", the component must first be
+ 169:.\Generated_Source\PSoC4/I2COLED.c **** *  initialized to operate in one of the following configurations: I2C, SPI, UART
+ 170:.\Generated_Source\PSoC4/I2COLED.c **** *  or EZ I2C. Otherwise this function does not enable the component.
+ 171:.\Generated_Source\PSoC4/I2COLED.c **** *
+ 172:.\Generated_Source\PSoC4/I2COLED.c **** * Parameters:
+ 173:.\Generated_Source\PSoC4/I2COLED.c **** *  None
+ 174:.\Generated_Source\PSoC4/I2COLED.c **** *
+ 175:.\Generated_Source\PSoC4/I2COLED.c **** * Return:
+ 176:.\Generated_Source\PSoC4/I2COLED.c **** *  None
+ 177:.\Generated_Source\PSoC4/I2COLED.c **** *
+ 178:.\Generated_Source\PSoC4/I2COLED.c **** * Global variables:
+ 179:.\Generated_Source\PSoC4/I2COLED.c **** *  I2COLED_initVar - used to check initial configuration, modified
+ 180:.\Generated_Source\PSoC4/I2COLED.c **** *  on first function call.
+ 181:.\Generated_Source\PSoC4/I2COLED.c **** *
+ 182:.\Generated_Source\PSoC4/I2COLED.c **** *******************************************************************************/
+ 183:.\Generated_Source\PSoC4/I2COLED.c **** void I2COLED_Start(void)
+ 184:.\Generated_Source\PSoC4/I2COLED.c **** {
+ 100              		.loc 1 184 0
+ 101              		.cfi_startproc
+ARM GAS  C:\DOCUME~1\Owner\LOCALS~1\Temp\ccwmnyAP.s 			page 6
+
+
+ 102 0000 80B5     		push	{r7, lr}
+ 103              		.cfi_def_cfa_offset 8
+ 104              		.cfi_offset 7, -8
+ 105              		.cfi_offset 14, -4
+ 106 0002 00AF     		add	r7, sp, #0
+ 107              		.cfi_def_cfa_register 7
+ 185:.\Generated_Source\PSoC4/I2COLED.c ****     if(0u == I2COLED_initVar)
+ 108              		.loc 1 185 0
+ 109 0004 064B     		ldr	r3, .L7
+ 110 0006 1B78     		ldrb	r3, [r3]
+ 111 0008 002B     		cmp	r3, #0
+ 112 000a 04D1     		bne	.L6
+ 186:.\Generated_Source\PSoC4/I2COLED.c ****     {
+ 187:.\Generated_Source\PSoC4/I2COLED.c ****         I2COLED_Init();
+ 113              		.loc 1 187 0
+ 114 000c FFF7FEFF 		bl	I2COLED_Init
+ 188:.\Generated_Source\PSoC4/I2COLED.c ****         I2COLED_initVar = 1u; /* Component was initialized */
+ 115              		.loc 1 188 0
+ 116 0010 034B     		ldr	r3, .L7
+ 117 0012 0122     		mov	r2, #1
+ 118 0014 1A70     		strb	r2, [r3]
+ 119              	.L6:
+ 189:.\Generated_Source\PSoC4/I2COLED.c ****     }
+ 190:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 191:.\Generated_Source\PSoC4/I2COLED.c ****     I2COLED_Enable();
+ 120              		.loc 1 191 0
+ 121 0016 FFF7FEFF 		bl	I2COLED_Enable
+ 192:.\Generated_Source\PSoC4/I2COLED.c **** }
+ 122              		.loc 1 192 0
+ 123 001a BD46     		mov	sp, r7
+ 124              		@ sp needed
+ 125 001c 80BD     		pop	{r7, pc}
+ 126              	.L8:
+ 127 001e C046     		.align	2
+ 128              	.L7:
+ 129 0020 00000000 		.word	I2COLED_initVar
+ 130              		.cfi_endproc
+ 131              	.LFE2:
+ 132              		.size	I2COLED_Start, .-I2COLED_Start
+ 133              		.section	.text.I2COLED_Stop,"ax",%progbits
+ 134              		.align	2
+ 135              		.global	I2COLED_Stop
+ 136              		.code	16
+ 137              		.thumb_func
+ 138              		.type	I2COLED_Stop, %function
+ 139              	I2COLED_Stop:
+ 140              	.LFB3:
+ 193:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 194:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 195:.\Generated_Source\PSoC4/I2COLED.c **** /*******************************************************************************
+ 196:.\Generated_Source\PSoC4/I2COLED.c **** * Function Name: I2COLED_Stop
+ 197:.\Generated_Source\PSoC4/I2COLED.c **** ********************************************************************************
+ 198:.\Generated_Source\PSoC4/I2COLED.c **** *
+ 199:.\Generated_Source\PSoC4/I2COLED.c **** * Summary:
+ 200:.\Generated_Source\PSoC4/I2COLED.c **** *  Disables the SCB component and its interrupt.
+ 201:.\Generated_Source\PSoC4/I2COLED.c **** *
+ 202:.\Generated_Source\PSoC4/I2COLED.c **** * Parameters:
+ARM GAS  C:\DOCUME~1\Owner\LOCALS~1\Temp\ccwmnyAP.s 			page 7
+
+
+ 203:.\Generated_Source\PSoC4/I2COLED.c **** *  None
+ 204:.\Generated_Source\PSoC4/I2COLED.c **** *
+ 205:.\Generated_Source\PSoC4/I2COLED.c **** * Return:
+ 206:.\Generated_Source\PSoC4/I2COLED.c **** *  None
+ 207:.\Generated_Source\PSoC4/I2COLED.c **** *
+ 208:.\Generated_Source\PSoC4/I2COLED.c **** *******************************************************************************/
+ 209:.\Generated_Source\PSoC4/I2COLED.c **** void I2COLED_Stop(void)
+ 210:.\Generated_Source\PSoC4/I2COLED.c **** {
+ 141              		.loc 1 210 0
+ 142              		.cfi_startproc
+ 143 0000 80B5     		push	{r7, lr}
+ 144              		.cfi_def_cfa_offset 8
+ 145              		.cfi_offset 7, -8
+ 146              		.cfi_offset 14, -4
+ 147 0002 00AF     		add	r7, sp, #0
+ 148              		.cfi_def_cfa_register 7
+ 211:.\Generated_Source\PSoC4/I2COLED.c **** #if(I2COLED_SCB_IRQ_INTERNAL)
+ 212:.\Generated_Source\PSoC4/I2COLED.c ****     I2COLED_DisableInt();
+ 149              		.loc 1 212 0
+ 150 0004 0B20     		mov	r0, #11
+ 151 0006 FFF7FEFF 		bl	CyIntDisable
+ 213:.\Generated_Source\PSoC4/I2COLED.c **** #endif /* (I2COLED_SCB_IRQ_INTERNAL) */
+ 214:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 215:.\Generated_Source\PSoC4/I2COLED.c ****     I2COLED_CTRL_REG &= (uint32) ~I2COLED_CTRL_ENABLED;  /* Disable scb IP */
+ 152              		.loc 1 215 0
+ 153 000a 064B     		ldr	r3, .L10
+ 154 000c 054A     		ldr	r2, .L10
+ 155 000e 1268     		ldr	r2, [r2]
+ 156 0010 5200     		lsl	r2, r2, #1
+ 157 0012 5208     		lsr	r2, r2, #1
+ 158 0014 1A60     		str	r2, [r3]
+ 216:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 217:.\Generated_Source\PSoC4/I2COLED.c **** #if(I2COLED_SCB_IRQ_INTERNAL)
+ 218:.\Generated_Source\PSoC4/I2COLED.c ****     I2COLED_ClearPendingInt();
+ 159              		.loc 1 218 0
+ 160 0016 0B20     		mov	r0, #11
+ 161 0018 FFF7FEFF 		bl	CyIntClearPending
+ 219:.\Generated_Source\PSoC4/I2COLED.c **** #endif /* (I2COLED_SCB_IRQ_INTERNAL) */
+ 220:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 221:.\Generated_Source\PSoC4/I2COLED.c ****     I2COLED_ScbModeStop(); /* Calls scbMode specific Stop function */
+ 162              		.loc 1 221 0
+ 163 001c FFF7FEFF 		bl	I2COLED_ScbModeStop
+ 222:.\Generated_Source\PSoC4/I2COLED.c **** }
+ 164              		.loc 1 222 0
+ 165 0020 BD46     		mov	sp, r7
+ 166              		@ sp needed
+ 167 0022 80BD     		pop	{r7, pc}
+ 168              	.L11:
+ 169              		.align	2
+ 170              	.L10:
+ 171 0024 00000740 		.word	1074200576
+ 172              		.cfi_endproc
+ 173              	.LFE3:
+ 174              		.size	I2COLED_Stop, .-I2COLED_Stop
+ 175              		.section	.text.I2COLED_SetRxFifoLevel,"ax",%progbits
+ 176              		.align	2
+ 177              		.global	I2COLED_SetRxFifoLevel
+ARM GAS  C:\DOCUME~1\Owner\LOCALS~1\Temp\ccwmnyAP.s 			page 8
+
+
+ 178              		.code	16
+ 179              		.thumb_func
+ 180              		.type	I2COLED_SetRxFifoLevel, %function
+ 181              	I2COLED_SetRxFifoLevel:
+ 182              	.LFB4:
+ 223:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 224:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 225:.\Generated_Source\PSoC4/I2COLED.c **** /*******************************************************************************
+ 226:.\Generated_Source\PSoC4/I2COLED.c **** * Function Name: I2COLED_SetRxFifoLevel
+ 227:.\Generated_Source\PSoC4/I2COLED.c **** ********************************************************************************
+ 228:.\Generated_Source\PSoC4/I2COLED.c **** *
+ 229:.\Generated_Source\PSoC4/I2COLED.c **** * Summary:
+ 230:.\Generated_Source\PSoC4/I2COLED.c **** *  Sets level in the RX FIFO to generate a RX level interrupt.
+ 231:.\Generated_Source\PSoC4/I2COLED.c **** *  When the RX FIFO has more entries than the RX FIFO level an RX level
+ 232:.\Generated_Source\PSoC4/I2COLED.c **** *  interrupt request is generated.
+ 233:.\Generated_Source\PSoC4/I2COLED.c **** *
+ 234:.\Generated_Source\PSoC4/I2COLED.c **** * Parameters:
+ 235:.\Generated_Source\PSoC4/I2COLED.c **** *  level: Level in the RX FIFO to generate RX level interrupt.
+ 236:.\Generated_Source\PSoC4/I2COLED.c **** *         The range of valid level values is between 0 and RX FIFO depth - 1.
+ 237:.\Generated_Source\PSoC4/I2COLED.c **** *
+ 238:.\Generated_Source\PSoC4/I2COLED.c **** * Return:
+ 239:.\Generated_Source\PSoC4/I2COLED.c **** *  None
+ 240:.\Generated_Source\PSoC4/I2COLED.c **** *
+ 241:.\Generated_Source\PSoC4/I2COLED.c **** *******************************************************************************/
+ 242:.\Generated_Source\PSoC4/I2COLED.c **** void I2COLED_SetRxFifoLevel(uint32 level)
+ 243:.\Generated_Source\PSoC4/I2COLED.c **** {
+ 183              		.loc 1 243 0
+ 184              		.cfi_startproc
+ 185 0000 80B5     		push	{r7, lr}
+ 186              		.cfi_def_cfa_offset 8
+ 187              		.cfi_offset 7, -8
+ 188              		.cfi_offset 14, -4
+ 189 0002 84B0     		sub	sp, sp, #16
+ 190              		.cfi_def_cfa_offset 24
+ 191 0004 00AF     		add	r7, sp, #0
+ 192              		.cfi_def_cfa_register 7
+ 193 0006 7860     		str	r0, [r7, #4]
+ 244:.\Generated_Source\PSoC4/I2COLED.c ****     uint32 rxFifoCtrl;
+ 245:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 246:.\Generated_Source\PSoC4/I2COLED.c ****     rxFifoCtrl = I2COLED_RX_FIFO_CTRL_REG;
+ 194              		.loc 1 246 0
+ 195 0008 094B     		ldr	r3, .L13
+ 196 000a 1B68     		ldr	r3, [r3]
+ 197 000c FB60     		str	r3, [r7, #12]
+ 247:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 248:.\Generated_Source\PSoC4/I2COLED.c ****     rxFifoCtrl &= ((uint32) ~I2COLED_RX_FIFO_CTRL_TRIGGER_LEVEL_MASK); /* Clear level mask bits */
+ 198              		.loc 1 248 0
+ 199 000e FB68     		ldr	r3, [r7, #12]
+ 200 0010 0722     		mov	r2, #7
+ 201 0012 9343     		bic	r3, r2
+ 202 0014 FB60     		str	r3, [r7, #12]
+ 249:.\Generated_Source\PSoC4/I2COLED.c ****     rxFifoCtrl |= ((uint32) (I2COLED_RX_FIFO_CTRL_TRIGGER_LEVEL_MASK & level));
+ 203              		.loc 1 249 0
+ 204 0016 7A68     		ldr	r2, [r7, #4]
+ 205 0018 0723     		mov	r3, #7
+ 206 001a 1340     		and	r3, r2
+ 207 001c FA68     		ldr	r2, [r7, #12]
+ARM GAS  C:\DOCUME~1\Owner\LOCALS~1\Temp\ccwmnyAP.s 			page 9
+
+
+ 208 001e 1343     		orr	r3, r2
+ 209 0020 FB60     		str	r3, [r7, #12]
+ 250:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 251:.\Generated_Source\PSoC4/I2COLED.c ****     I2COLED_RX_FIFO_CTRL_REG = rxFifoCtrl;
+ 210              		.loc 1 251 0
+ 211 0022 034B     		ldr	r3, .L13
+ 212 0024 FA68     		ldr	r2, [r7, #12]
+ 213 0026 1A60     		str	r2, [r3]
+ 252:.\Generated_Source\PSoC4/I2COLED.c **** }
+ 214              		.loc 1 252 0
+ 215 0028 BD46     		mov	sp, r7
+ 216 002a 04B0     		add	sp, sp, #16
+ 217              		@ sp needed
+ 218 002c 80BD     		pop	{r7, pc}
+ 219              	.L14:
+ 220 002e C046     		.align	2
+ 221              	.L13:
+ 222 0030 04030740 		.word	1074201348
+ 223              		.cfi_endproc
+ 224              	.LFE4:
+ 225              		.size	I2COLED_SetRxFifoLevel, .-I2COLED_SetRxFifoLevel
+ 226              		.section	.text.I2COLED_SetTxFifoLevel,"ax",%progbits
+ 227              		.align	2
+ 228              		.global	I2COLED_SetTxFifoLevel
+ 229              		.code	16
+ 230              		.thumb_func
+ 231              		.type	I2COLED_SetTxFifoLevel, %function
+ 232              	I2COLED_SetTxFifoLevel:
+ 233              	.LFB5:
+ 253:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 254:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 255:.\Generated_Source\PSoC4/I2COLED.c **** /*******************************************************************************
+ 256:.\Generated_Source\PSoC4/I2COLED.c **** * Function Name: I2COLED_SetTxFifoLevel
+ 257:.\Generated_Source\PSoC4/I2COLED.c **** ********************************************************************************
+ 258:.\Generated_Source\PSoC4/I2COLED.c **** *
+ 259:.\Generated_Source\PSoC4/I2COLED.c **** * Summary:
+ 260:.\Generated_Source\PSoC4/I2COLED.c **** *  Sets level in the TX FIFO to generate a TX level interrupt.
+ 261:.\Generated_Source\PSoC4/I2COLED.c **** *  When the TX FIFO has more entries than the TX FIFO level an TX level
+ 262:.\Generated_Source\PSoC4/I2COLED.c **** *  interrupt request is generated.
+ 263:.\Generated_Source\PSoC4/I2COLED.c **** *
+ 264:.\Generated_Source\PSoC4/I2COLED.c **** * Parameters:
+ 265:.\Generated_Source\PSoC4/I2COLED.c **** *  level: Level in the TX FIFO to generate TX level interrupt.
+ 266:.\Generated_Source\PSoC4/I2COLED.c **** *         The range of valid level values is between 0 and TX FIFO depth - 1.
+ 267:.\Generated_Source\PSoC4/I2COLED.c **** *
+ 268:.\Generated_Source\PSoC4/I2COLED.c **** * Return:
+ 269:.\Generated_Source\PSoC4/I2COLED.c **** *  None
+ 270:.\Generated_Source\PSoC4/I2COLED.c **** *
+ 271:.\Generated_Source\PSoC4/I2COLED.c **** *******************************************************************************/
+ 272:.\Generated_Source\PSoC4/I2COLED.c **** void I2COLED_SetTxFifoLevel(uint32 level)
+ 273:.\Generated_Source\PSoC4/I2COLED.c **** {
+ 234              		.loc 1 273 0
+ 235              		.cfi_startproc
+ 236 0000 80B5     		push	{r7, lr}
+ 237              		.cfi_def_cfa_offset 8
+ 238              		.cfi_offset 7, -8
+ 239              		.cfi_offset 14, -4
+ 240 0002 84B0     		sub	sp, sp, #16
+ARM GAS  C:\DOCUME~1\Owner\LOCALS~1\Temp\ccwmnyAP.s 			page 10
+
+
+ 241              		.cfi_def_cfa_offset 24
+ 242 0004 00AF     		add	r7, sp, #0
+ 243              		.cfi_def_cfa_register 7
+ 244 0006 7860     		str	r0, [r7, #4]
+ 274:.\Generated_Source\PSoC4/I2COLED.c ****     uint32 txFifoCtrl;
+ 275:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 276:.\Generated_Source\PSoC4/I2COLED.c ****     txFifoCtrl = I2COLED_TX_FIFO_CTRL_REG;
+ 245              		.loc 1 276 0
+ 246 0008 094B     		ldr	r3, .L16
+ 247 000a 1B68     		ldr	r3, [r3]
+ 248 000c FB60     		str	r3, [r7, #12]
+ 277:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 278:.\Generated_Source\PSoC4/I2COLED.c ****     txFifoCtrl &= ((uint32) ~I2COLED_TX_FIFO_CTRL_TRIGGER_LEVEL_MASK); /* Clear level mask bits */
+ 249              		.loc 1 278 0
+ 250 000e FB68     		ldr	r3, [r7, #12]
+ 251 0010 0722     		mov	r2, #7
+ 252 0012 9343     		bic	r3, r2
+ 253 0014 FB60     		str	r3, [r7, #12]
+ 279:.\Generated_Source\PSoC4/I2COLED.c ****     txFifoCtrl |= ((uint32) (I2COLED_TX_FIFO_CTRL_TRIGGER_LEVEL_MASK & level));
+ 254              		.loc 1 279 0
+ 255 0016 7A68     		ldr	r2, [r7, #4]
+ 256 0018 0723     		mov	r3, #7
+ 257 001a 1340     		and	r3, r2
+ 258 001c FA68     		ldr	r2, [r7, #12]
+ 259 001e 1343     		orr	r3, r2
+ 260 0020 FB60     		str	r3, [r7, #12]
+ 280:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 281:.\Generated_Source\PSoC4/I2COLED.c ****     I2COLED_TX_FIFO_CTRL_REG = txFifoCtrl;
+ 261              		.loc 1 281 0
+ 262 0022 034B     		ldr	r3, .L16
+ 263 0024 FA68     		ldr	r2, [r7, #12]
+ 264 0026 1A60     		str	r2, [r3]
+ 282:.\Generated_Source\PSoC4/I2COLED.c **** }
+ 265              		.loc 1 282 0
+ 266 0028 BD46     		mov	sp, r7
+ 267 002a 04B0     		add	sp, sp, #16
+ 268              		@ sp needed
+ 269 002c 80BD     		pop	{r7, pc}
+ 270              	.L17:
+ 271 002e C046     		.align	2
+ 272              	.L16:
+ 273 0030 04020740 		.word	1074201092
+ 274              		.cfi_endproc
+ 275              	.LFE5:
+ 276              		.size	I2COLED_SetTxFifoLevel, .-I2COLED_SetTxFifoLevel
+ 277              		.section	.text.I2COLED_SetCustomInterruptHandler,"ax",%progbits
+ 278              		.align	2
+ 279              		.global	I2COLED_SetCustomInterruptHandler
+ 280              		.code	16
+ 281              		.thumb_func
+ 282              		.type	I2COLED_SetCustomInterruptHandler, %function
+ 283              	I2COLED_SetCustomInterruptHandler:
+ 284              	.LFB6:
+ 283:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 284:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 285:.\Generated_Source\PSoC4/I2COLED.c **** /*******************************************************************************
+ 286:.\Generated_Source\PSoC4/I2COLED.c **** * Function Name: I2COLED_SetCustomInterruptHandler
+ARM GAS  C:\DOCUME~1\Owner\LOCALS~1\Temp\ccwmnyAP.s 			page 11
+
+
+ 287:.\Generated_Source\PSoC4/I2COLED.c **** ********************************************************************************
+ 288:.\Generated_Source\PSoC4/I2COLED.c **** *
+ 289:.\Generated_Source\PSoC4/I2COLED.c **** * Summary:
+ 290:.\Generated_Source\PSoC4/I2COLED.c **** *  Registers a function to be called by the internal interrupt handler.
+ 291:.\Generated_Source\PSoC4/I2COLED.c **** *  First the function that is registered is called, then the internal interrupt
+ 292:.\Generated_Source\PSoC4/I2COLED.c **** *  handler performs any operation such as software buffer management functions
+ 293:.\Generated_Source\PSoC4/I2COLED.c **** *  before the interrupt returns.  It is the user's responsibility not to break
+ 294:.\Generated_Source\PSoC4/I2COLED.c **** *  the software buffer operations. Only one custom handler is supported, which
+ 295:.\Generated_Source\PSoC4/I2COLED.c **** *  is the function provided by the most recent call.
+ 296:.\Generated_Source\PSoC4/I2COLED.c **** *  At the initialization time no custom handler is registered.
+ 297:.\Generated_Source\PSoC4/I2COLED.c **** *
+ 298:.\Generated_Source\PSoC4/I2COLED.c **** * Parameters:
+ 299:.\Generated_Source\PSoC4/I2COLED.c **** *  func: Pointer to the function to register.
+ 300:.\Generated_Source\PSoC4/I2COLED.c **** *        The value NULL indicates to remove the current custom interrupt
+ 301:.\Generated_Source\PSoC4/I2COLED.c **** *        handler.
+ 302:.\Generated_Source\PSoC4/I2COLED.c **** *
+ 303:.\Generated_Source\PSoC4/I2COLED.c **** * Return:
+ 304:.\Generated_Source\PSoC4/I2COLED.c **** *  None
+ 305:.\Generated_Source\PSoC4/I2COLED.c **** *
+ 306:.\Generated_Source\PSoC4/I2COLED.c **** *******************************************************************************/
+ 307:.\Generated_Source\PSoC4/I2COLED.c **** void I2COLED_SetCustomInterruptHandler(cyisraddress func)
+ 308:.\Generated_Source\PSoC4/I2COLED.c **** {
+ 285              		.loc 1 308 0
+ 286              		.cfi_startproc
+ 287 0000 80B5     		push	{r7, lr}
+ 288              		.cfi_def_cfa_offset 8
+ 289              		.cfi_offset 7, -8
+ 290              		.cfi_offset 14, -4
+ 291 0002 82B0     		sub	sp, sp, #8
+ 292              		.cfi_def_cfa_offset 16
+ 293 0004 00AF     		add	r7, sp, #0
+ 294              		.cfi_def_cfa_register 7
+ 295 0006 7860     		str	r0, [r7, #4]
+ 309:.\Generated_Source\PSoC4/I2COLED.c **** #if !defined (CY_REMOVE_I2COLED_CUSTOM_INTR_HANDLER)
+ 310:.\Generated_Source\PSoC4/I2COLED.c ****     I2COLED_customIntrHandler = func; /* Register interrupt handler */
+ 296              		.loc 1 310 0
+ 297 0008 024B     		ldr	r3, .L19
+ 298 000a 7A68     		ldr	r2, [r7, #4]
+ 299 000c 1A60     		str	r2, [r3]
+ 311:.\Generated_Source\PSoC4/I2COLED.c **** #else
+ 312:.\Generated_Source\PSoC4/I2COLED.c ****     if(NULL != func)
+ 313:.\Generated_Source\PSoC4/I2COLED.c ****     {
+ 314:.\Generated_Source\PSoC4/I2COLED.c ****         /* Suppress compiler warning */
+ 315:.\Generated_Source\PSoC4/I2COLED.c ****     }
+ 316:.\Generated_Source\PSoC4/I2COLED.c **** #endif /* !defined (CY_REMOVE_I2COLED_CUSTOM_INTR_HANDLER) */
+ 317:.\Generated_Source\PSoC4/I2COLED.c **** }
+ 300              		.loc 1 317 0
+ 301 000e BD46     		mov	sp, r7
+ 302 0010 02B0     		add	sp, sp, #8
+ 303              		@ sp needed
+ 304 0012 80BD     		pop	{r7, pc}
+ 305              	.L20:
+ 306              		.align	2
+ 307              	.L19:
+ 308 0014 00000000 		.word	I2COLED_customIntrHandler
+ 309              		.cfi_endproc
+ 310              	.LFE6:
+ARM GAS  C:\DOCUME~1\Owner\LOCALS~1\Temp\ccwmnyAP.s 			page 12
+
+
+ 311              		.size	I2COLED_SetCustomInterruptHandler, .-I2COLED_SetCustomInterruptHandler
+ 312              		.section	.text.I2COLED_ScbEnableIntr,"ax",%progbits
+ 313              		.align	2
+ 314              		.code	16
+ 315              		.thumb_func
+ 316              		.type	I2COLED_ScbEnableIntr, %function
+ 317              	I2COLED_ScbEnableIntr:
+ 318              	.LFB7:
+ 318:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 319:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 320:.\Generated_Source\PSoC4/I2COLED.c **** /*******************************************************************************
+ 321:.\Generated_Source\PSoC4/I2COLED.c **** * Function Name: I2COLED_ScbModeEnableIntr
+ 322:.\Generated_Source\PSoC4/I2COLED.c **** ********************************************************************************
+ 323:.\Generated_Source\PSoC4/I2COLED.c **** *
+ 324:.\Generated_Source\PSoC4/I2COLED.c **** * Summary:
+ 325:.\Generated_Source\PSoC4/I2COLED.c **** *  Enables an interrupt for a specific mode.
+ 326:.\Generated_Source\PSoC4/I2COLED.c **** *
+ 327:.\Generated_Source\PSoC4/I2COLED.c **** * Parameters:
+ 328:.\Generated_Source\PSoC4/I2COLED.c **** *  None
+ 329:.\Generated_Source\PSoC4/I2COLED.c **** *
+ 330:.\Generated_Source\PSoC4/I2COLED.c **** * Return:
+ 331:.\Generated_Source\PSoC4/I2COLED.c **** *  None
+ 332:.\Generated_Source\PSoC4/I2COLED.c **** *
+ 333:.\Generated_Source\PSoC4/I2COLED.c **** *******************************************************************************/
+ 334:.\Generated_Source\PSoC4/I2COLED.c **** static void I2COLED_ScbEnableIntr(void)
+ 335:.\Generated_Source\PSoC4/I2COLED.c **** {
+ 319              		.loc 1 335 0
+ 320              		.cfi_startproc
+ 321 0000 80B5     		push	{r7, lr}
+ 322              		.cfi_def_cfa_offset 8
+ 323              		.cfi_offset 7, -8
+ 324              		.cfi_offset 14, -4
+ 325 0002 00AF     		add	r7, sp, #0
+ 326              		.cfi_def_cfa_register 7
+ 336:.\Generated_Source\PSoC4/I2COLED.c **** #if(I2COLED_SCB_IRQ_INTERNAL)
+ 337:.\Generated_Source\PSoC4/I2COLED.c ****     #if(I2COLED_SCB_MODE_UNCONFIG_CONST_CFG)
+ 338:.\Generated_Source\PSoC4/I2COLED.c ****         /* Enable interrupt in NVIC */
+ 339:.\Generated_Source\PSoC4/I2COLED.c ****         if(0u != I2COLED_scbEnableIntr)
+ 340:.\Generated_Source\PSoC4/I2COLED.c ****         {
+ 341:.\Generated_Source\PSoC4/I2COLED.c ****             I2COLED_EnableInt();
+ 342:.\Generated_Source\PSoC4/I2COLED.c ****         }
+ 343:.\Generated_Source\PSoC4/I2COLED.c ****     #else
+ 344:.\Generated_Source\PSoC4/I2COLED.c ****         I2COLED_EnableInt();
+ 327              		.loc 1 344 0
+ 328 0004 0B20     		mov	r0, #11
+ 329 0006 FFF7FEFF 		bl	CyIntEnable
+ 345:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 346:.\Generated_Source\PSoC4/I2COLED.c ****     #endif /* (I2COLED_SCB_MODE_UNCONFIG_CONST_CFG) */
+ 347:.\Generated_Source\PSoC4/I2COLED.c **** #endif /* (I2COLED_SCB_IRQ_INTERNAL) */
+ 348:.\Generated_Source\PSoC4/I2COLED.c **** }
+ 330              		.loc 1 348 0
+ 331 000a BD46     		mov	sp, r7
+ 332              		@ sp needed
+ 333 000c 80BD     		pop	{r7, pc}
+ 334              		.cfi_endproc
+ 335              	.LFE7:
+ 336              		.size	I2COLED_ScbEnableIntr, .-I2COLED_ScbEnableIntr
+ARM GAS  C:\DOCUME~1\Owner\LOCALS~1\Temp\ccwmnyAP.s 			page 13
+
+
+ 337              		.section	.text.I2COLED_ScbModeStop,"ax",%progbits
+ 338              		.align	2
+ 339              		.code	16
+ 340              		.thumb_func
+ 341              		.type	I2COLED_ScbModeStop, %function
+ 342              	I2COLED_ScbModeStop:
+ 343              	.LFB8:
+ 349:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 350:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 351:.\Generated_Source\PSoC4/I2COLED.c **** /*******************************************************************************
+ 352:.\Generated_Source\PSoC4/I2COLED.c **** * Function Name: I2COLED_ScbModeStop
+ 353:.\Generated_Source\PSoC4/I2COLED.c **** ********************************************************************************
+ 354:.\Generated_Source\PSoC4/I2COLED.c **** *
+ 355:.\Generated_Source\PSoC4/I2COLED.c **** * Summary:
+ 356:.\Generated_Source\PSoC4/I2COLED.c **** *  Calls the Stop function for a specific operation mode.
+ 357:.\Generated_Source\PSoC4/I2COLED.c **** *
+ 358:.\Generated_Source\PSoC4/I2COLED.c **** * Parameters:
+ 359:.\Generated_Source\PSoC4/I2COLED.c **** *  None
+ 360:.\Generated_Source\PSoC4/I2COLED.c **** *
+ 361:.\Generated_Source\PSoC4/I2COLED.c **** * Return:
+ 362:.\Generated_Source\PSoC4/I2COLED.c **** *  None
+ 363:.\Generated_Source\PSoC4/I2COLED.c **** *
+ 364:.\Generated_Source\PSoC4/I2COLED.c **** *******************************************************************************/
+ 365:.\Generated_Source\PSoC4/I2COLED.c **** static void I2COLED_ScbModeStop(void)
+ 366:.\Generated_Source\PSoC4/I2COLED.c **** {
+ 344              		.loc 1 366 0
+ 345              		.cfi_startproc
+ 346 0000 80B5     		push	{r7, lr}
+ 347              		.cfi_def_cfa_offset 8
+ 348              		.cfi_offset 7, -8
+ 349              		.cfi_offset 14, -4
+ 350 0002 00AF     		add	r7, sp, #0
+ 351              		.cfi_def_cfa_register 7
+ 367:.\Generated_Source\PSoC4/I2COLED.c **** #if(I2COLED_SCB_MODE_UNCONFIG_CONST_CFG)
+ 368:.\Generated_Source\PSoC4/I2COLED.c ****     if(I2COLED_SCB_MODE_I2C_RUNTM_CFG)
+ 369:.\Generated_Source\PSoC4/I2COLED.c ****     {
+ 370:.\Generated_Source\PSoC4/I2COLED.c ****         I2COLED_I2CStop();
+ 371:.\Generated_Source\PSoC4/I2COLED.c ****     }
+ 372:.\Generated_Source\PSoC4/I2COLED.c ****     else if (I2COLED_SCB_MODE_EZI2C_RUNTM_CFG)
+ 373:.\Generated_Source\PSoC4/I2COLED.c ****     {
+ 374:.\Generated_Source\PSoC4/I2COLED.c ****         I2COLED_EzI2CStop();
+ 375:.\Generated_Source\PSoC4/I2COLED.c ****     }
+ 376:.\Generated_Source\PSoC4/I2COLED.c **** #if (!I2COLED_CY_SCBIP_V1)
+ 377:.\Generated_Source\PSoC4/I2COLED.c ****     else if (I2COLED_SCB_MODE_UART_RUNTM_CFG)
+ 378:.\Generated_Source\PSoC4/I2COLED.c ****     {
+ 379:.\Generated_Source\PSoC4/I2COLED.c ****         I2COLED_UartStop();
+ 380:.\Generated_Source\PSoC4/I2COLED.c ****     }
+ 381:.\Generated_Source\PSoC4/I2COLED.c **** #endif /* (!I2COLED_CY_SCBIP_V1) */
+ 382:.\Generated_Source\PSoC4/I2COLED.c ****     else
+ 383:.\Generated_Source\PSoC4/I2COLED.c ****     {
+ 384:.\Generated_Source\PSoC4/I2COLED.c ****         /* Do nothing for other modes */
+ 385:.\Generated_Source\PSoC4/I2COLED.c ****     }
+ 386:.\Generated_Source\PSoC4/I2COLED.c **** #elif(I2COLED_SCB_MODE_I2C_CONST_CFG)
+ 387:.\Generated_Source\PSoC4/I2COLED.c ****     I2COLED_I2CStop();
+ 352              		.loc 1 387 0
+ 353 0004 FFF7FEFF 		bl	I2COLED_I2CStop
+ 388:.\Generated_Source\PSoC4/I2COLED.c **** 
+ARM GAS  C:\DOCUME~1\Owner\LOCALS~1\Temp\ccwmnyAP.s 			page 14
+
+
+ 389:.\Generated_Source\PSoC4/I2COLED.c **** #elif(I2COLED_SCB_MODE_EZI2C_CONST_CFG)
+ 390:.\Generated_Source\PSoC4/I2COLED.c ****     I2COLED_EzI2CStop();
+ 391:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 392:.\Generated_Source\PSoC4/I2COLED.c **** #elif(I2COLED_SCB_MODE_UART_CONST_CFG)
+ 393:.\Generated_Source\PSoC4/I2COLED.c ****     I2COLED_UartStop();
+ 394:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 395:.\Generated_Source\PSoC4/I2COLED.c **** #endif /* (I2COLED_SCB_MODE_UNCONFIG_CONST_CFG) */
+ 396:.\Generated_Source\PSoC4/I2COLED.c **** }
+ 354              		.loc 1 396 0
+ 355 0008 BD46     		mov	sp, r7
+ 356              		@ sp needed
+ 357 000a 80BD     		pop	{r7, pc}
+ 358              		.cfi_endproc
+ 359              	.LFE8:
+ 360              		.size	I2COLED_ScbModeStop, .-I2COLED_ScbModeStop
+ 361              		.section	.text.I2COLED_I2CSlaveNackGeneration,"ax",%progbits
+ 362              		.align	2
+ 363              		.global	I2COLED_I2CSlaveNackGeneration
+ 364              		.code	16
+ 365              		.thumb_func
+ 366              		.type	I2COLED_I2CSlaveNackGeneration, %function
+ 367              	I2COLED_I2CSlaveNackGeneration:
+ 368              	.LFB9:
+ 397:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 398:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 399:.\Generated_Source\PSoC4/I2COLED.c **** #if(I2COLED_SCB_MODE_UNCONFIG_CONST_CFG)
+ 400:.\Generated_Source\PSoC4/I2COLED.c ****     /*******************************************************************************
+ 401:.\Generated_Source\PSoC4/I2COLED.c ****     * Function Name: I2COLED_SetPins
+ 402:.\Generated_Source\PSoC4/I2COLED.c ****     ********************************************************************************
+ 403:.\Generated_Source\PSoC4/I2COLED.c ****     *
+ 404:.\Generated_Source\PSoC4/I2COLED.c ****     * Summary:
+ 405:.\Generated_Source\PSoC4/I2COLED.c ****     *  Sets the pins settings accordingly to the selected operation mode.
+ 406:.\Generated_Source\PSoC4/I2COLED.c ****     *  Only available in the Unconfigured operation mode. The mode specific
+ 407:.\Generated_Source\PSoC4/I2COLED.c ****     *  initialization function calls it.
+ 408:.\Generated_Source\PSoC4/I2COLED.c ****     *  Pins configuration is set by PSoC Creator when a specific mode of operation
+ 409:.\Generated_Source\PSoC4/I2COLED.c ****     *  is selected in design time.
+ 410:.\Generated_Source\PSoC4/I2COLED.c ****     *
+ 411:.\Generated_Source\PSoC4/I2COLED.c ****     * Parameters:
+ 412:.\Generated_Source\PSoC4/I2COLED.c ****     *  mode:      Mode of SCB operation.
+ 413:.\Generated_Source\PSoC4/I2COLED.c ****     *  subMode:   Sub-mode of SCB operation. It is only required for SPI and UART
+ 414:.\Generated_Source\PSoC4/I2COLED.c ****     *             modes.
+ 415:.\Generated_Source\PSoC4/I2COLED.c ****     *  uartEnableMask: enables TX or RX direction and RTS and CTS signals.
+ 416:.\Generated_Source\PSoC4/I2COLED.c ****     *
+ 417:.\Generated_Source\PSoC4/I2COLED.c ****     * Return:
+ 418:.\Generated_Source\PSoC4/I2COLED.c ****     *  None
+ 419:.\Generated_Source\PSoC4/I2COLED.c ****     *
+ 420:.\Generated_Source\PSoC4/I2COLED.c ****     *******************************************************************************/
+ 421:.\Generated_Source\PSoC4/I2COLED.c ****     void I2COLED_SetPins(uint32 mode, uint32 subMode, uint32 uartEnableMask)
+ 422:.\Generated_Source\PSoC4/I2COLED.c ****     {
+ 423:.\Generated_Source\PSoC4/I2COLED.c ****         uint32 hsiomSel [I2COLED_SCB_PINS_NUMBER];
+ 424:.\Generated_Source\PSoC4/I2COLED.c ****         uint32 pinsDm   [I2COLED_SCB_PINS_NUMBER];
+ 425:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 426:.\Generated_Source\PSoC4/I2COLED.c ****     #if (!I2COLED_CY_SCBIP_V1)
+ 427:.\Generated_Source\PSoC4/I2COLED.c ****         uint32 pinsInBuf = 0u;
+ 428:.\Generated_Source\PSoC4/I2COLED.c ****     #endif /* (!I2COLED_CY_SCBIP_V1) */
+ 429:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 430:.\Generated_Source\PSoC4/I2COLED.c ****         uint32 i;
+ARM GAS  C:\DOCUME~1\Owner\LOCALS~1\Temp\ccwmnyAP.s 			page 15
+
+
+ 431:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 432:.\Generated_Source\PSoC4/I2COLED.c ****         /* Set default HSIOM to GPIO and Drive Mode to Analog Hi-Z */
+ 433:.\Generated_Source\PSoC4/I2COLED.c ****         for(i = 0u; i < I2COLED_SCB_PINS_NUMBER; i++)
+ 434:.\Generated_Source\PSoC4/I2COLED.c ****         {
+ 435:.\Generated_Source\PSoC4/I2COLED.c ****             hsiomSel[i]  = I2COLED_HSIOM_DEF_SEL;
+ 436:.\Generated_Source\PSoC4/I2COLED.c ****             pinsDm[i]    = I2COLED_PIN_DM_ALG_HIZ;
+ 437:.\Generated_Source\PSoC4/I2COLED.c ****         }
+ 438:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 439:.\Generated_Source\PSoC4/I2COLED.c ****         if((I2COLED_SCB_MODE_I2C   == mode) ||
+ 440:.\Generated_Source\PSoC4/I2COLED.c ****            (I2COLED_SCB_MODE_EZI2C == mode))
+ 441:.\Generated_Source\PSoC4/I2COLED.c ****         {
+ 442:.\Generated_Source\PSoC4/I2COLED.c ****             hsiomSel[I2COLED_MOSI_SCL_RX_PIN_INDEX] = I2COLED_HSIOM_I2C_SEL;
+ 443:.\Generated_Source\PSoC4/I2COLED.c ****             hsiomSel[I2COLED_MISO_SDA_TX_PIN_INDEX] = I2COLED_HSIOM_I2C_SEL;
+ 444:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 445:.\Generated_Source\PSoC4/I2COLED.c ****             pinsDm[I2COLED_MOSI_SCL_RX_PIN_INDEX] = I2COLED_PIN_DM_OD_LO;
+ 446:.\Generated_Source\PSoC4/I2COLED.c ****             pinsDm[I2COLED_MISO_SDA_TX_PIN_INDEX] = I2COLED_PIN_DM_OD_LO;
+ 447:.\Generated_Source\PSoC4/I2COLED.c ****         }
+ 448:.\Generated_Source\PSoC4/I2COLED.c ****     #if (!I2COLED_CY_SCBIP_V1)
+ 449:.\Generated_Source\PSoC4/I2COLED.c ****         else if(I2COLED_SCB_MODE_SPI == mode)
+ 450:.\Generated_Source\PSoC4/I2COLED.c ****         {
+ 451:.\Generated_Source\PSoC4/I2COLED.c ****             hsiomSel[I2COLED_MOSI_SCL_RX_PIN_INDEX] = I2COLED_HSIOM_SPI_SEL;
+ 452:.\Generated_Source\PSoC4/I2COLED.c ****             hsiomSel[I2COLED_MISO_SDA_TX_PIN_INDEX] = I2COLED_HSIOM_SPI_SEL;
+ 453:.\Generated_Source\PSoC4/I2COLED.c ****             hsiomSel[I2COLED_SCLK_PIN_INDEX]        = I2COLED_HSIOM_SPI_SEL;
+ 454:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 455:.\Generated_Source\PSoC4/I2COLED.c ****             if(I2COLED_SPI_SLAVE == subMode)
+ 456:.\Generated_Source\PSoC4/I2COLED.c ****             {
+ 457:.\Generated_Source\PSoC4/I2COLED.c ****                 /* Slave */
+ 458:.\Generated_Source\PSoC4/I2COLED.c ****                 pinsDm[I2COLED_MOSI_SCL_RX_PIN_INDEX] = I2COLED_PIN_DM_DIG_HIZ;
+ 459:.\Generated_Source\PSoC4/I2COLED.c ****                 pinsDm[I2COLED_MISO_SDA_TX_PIN_INDEX] = I2COLED_PIN_DM_STRONG;
+ 460:.\Generated_Source\PSoC4/I2COLED.c ****                 pinsDm[I2COLED_SCLK_PIN_INDEX]        = I2COLED_PIN_DM_DIG_HIZ;
+ 461:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 462:.\Generated_Source\PSoC4/I2COLED.c ****             #if(I2COLED_SS0_PIN)
+ 463:.\Generated_Source\PSoC4/I2COLED.c ****                 /* Only SS0 is valid choice for Slave */
+ 464:.\Generated_Source\PSoC4/I2COLED.c ****                 hsiomSel[I2COLED_SS0_PIN_INDEX] = I2COLED_HSIOM_SPI_SEL;
+ 465:.\Generated_Source\PSoC4/I2COLED.c ****                 pinsDm  [I2COLED_SS0_PIN_INDEX] = I2COLED_PIN_DM_DIG_HIZ;
+ 466:.\Generated_Source\PSoC4/I2COLED.c ****             #endif /* (I2COLED_SS1_PIN) */
+ 467:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 468:.\Generated_Source\PSoC4/I2COLED.c ****             #if(I2COLED_MISO_SDA_TX_PIN)
+ 469:.\Generated_Source\PSoC4/I2COLED.c ****                 /* Disable input buffer */
+ 470:.\Generated_Source\PSoC4/I2COLED.c ****                  pinsInBuf |= I2COLED_MISO_SDA_TX_PIN_MASK;
+ 471:.\Generated_Source\PSoC4/I2COLED.c ****             #endif /* (I2COLED_MISO_SDA_TX_PIN_PIN) */
+ 472:.\Generated_Source\PSoC4/I2COLED.c ****             }
+ 473:.\Generated_Source\PSoC4/I2COLED.c ****             else /* (Master) */
+ 474:.\Generated_Source\PSoC4/I2COLED.c ****             {
+ 475:.\Generated_Source\PSoC4/I2COLED.c ****                 pinsDm[I2COLED_MOSI_SCL_RX_PIN_INDEX] = I2COLED_PIN_DM_STRONG;
+ 476:.\Generated_Source\PSoC4/I2COLED.c ****                 pinsDm[I2COLED_MISO_SDA_TX_PIN_INDEX] = I2COLED_PIN_DM_DIG_HIZ;
+ 477:.\Generated_Source\PSoC4/I2COLED.c ****                 pinsDm[I2COLED_SCLK_PIN_INDEX]        = I2COLED_PIN_DM_STRONG;
+ 478:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 479:.\Generated_Source\PSoC4/I2COLED.c ****             #if(I2COLED_SS0_PIN)
+ 480:.\Generated_Source\PSoC4/I2COLED.c ****                 hsiomSel [I2COLED_SS0_PIN_INDEX] = I2COLED_HSIOM_SPI_SEL;
+ 481:.\Generated_Source\PSoC4/I2COLED.c ****                 pinsDm   [I2COLED_SS0_PIN_INDEX] = I2COLED_PIN_DM_STRONG;
+ 482:.\Generated_Source\PSoC4/I2COLED.c ****                 pinsInBuf                                |= I2COLED_SS0_PIN_MASK;
+ 483:.\Generated_Source\PSoC4/I2COLED.c ****             #endif /* (I2COLED_SS0_PIN) */
+ 484:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 485:.\Generated_Source\PSoC4/I2COLED.c ****             #if(I2COLED_SS1_PIN)
+ 486:.\Generated_Source\PSoC4/I2COLED.c ****                 hsiomSel [I2COLED_SS1_PIN_INDEX] = I2COLED_HSIOM_SPI_SEL;
+ 487:.\Generated_Source\PSoC4/I2COLED.c ****                 pinsDm   [I2COLED_SS1_PIN_INDEX] = I2COLED_PIN_DM_STRONG;
+ARM GAS  C:\DOCUME~1\Owner\LOCALS~1\Temp\ccwmnyAP.s 			page 16
+
+
+ 488:.\Generated_Source\PSoC4/I2COLED.c ****                 pinsInBuf                                |= I2COLED_SS1_PIN_MASK;
+ 489:.\Generated_Source\PSoC4/I2COLED.c ****             #endif /* (I2COLED_SS1_PIN) */
+ 490:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 491:.\Generated_Source\PSoC4/I2COLED.c ****             #if(I2COLED_SS2_PIN)
+ 492:.\Generated_Source\PSoC4/I2COLED.c ****                 hsiomSel [I2COLED_SS2_PIN_INDEX] = I2COLED_HSIOM_SPI_SEL;
+ 493:.\Generated_Source\PSoC4/I2COLED.c ****                 pinsDm   [I2COLED_SS2_PIN_INDEX] = I2COLED_PIN_DM_STRONG;
+ 494:.\Generated_Source\PSoC4/I2COLED.c ****                 pinsInBuf                                |= I2COLED_SS2_PIN_MASK;
+ 495:.\Generated_Source\PSoC4/I2COLED.c ****             #endif /* (I2COLED_SS2_PIN) */
+ 496:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 497:.\Generated_Source\PSoC4/I2COLED.c ****             #if(I2COLED_SS3_PIN)
+ 498:.\Generated_Source\PSoC4/I2COLED.c ****                 hsiomSel [I2COLED_SS3_PIN_INDEX] = I2COLED_HSIOM_SPI_SEL;
+ 499:.\Generated_Source\PSoC4/I2COLED.c ****                 pinsDm   [I2COLED_SS3_PIN_INDEX] = I2COLED_PIN_DM_STRONG;
+ 500:.\Generated_Source\PSoC4/I2COLED.c ****                 pinsInBuf                                |= I2COLED_SS3_PIN_MASK;
+ 501:.\Generated_Source\PSoC4/I2COLED.c ****             #endif /* (I2COLED_SS2_PIN) */
+ 502:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 503:.\Generated_Source\PSoC4/I2COLED.c ****                 /* Disable input buffers */
+ 504:.\Generated_Source\PSoC4/I2COLED.c ****             #if(I2COLED_MOSI_SCL_RX_PIN)
+ 505:.\Generated_Source\PSoC4/I2COLED.c ****                 pinsInBuf |= I2COLED_MOSI_SCL_RX_PIN_MASK;
+ 506:.\Generated_Source\PSoC4/I2COLED.c ****             #endif /* (I2COLED_MOSI_SCL_RX_PIN) */
+ 507:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 508:.\Generated_Source\PSoC4/I2COLED.c ****              #if(I2COLED_MOSI_SCL_RX_WAKE_PIN)
+ 509:.\Generated_Source\PSoC4/I2COLED.c ****                 pinsInBuf |= I2COLED_MOSI_SCL_RX_WAKE_PIN_MASK;
+ 510:.\Generated_Source\PSoC4/I2COLED.c ****             #endif /* (I2COLED_MOSI_SCL_RX_WAKE_PIN) */
+ 511:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 512:.\Generated_Source\PSoC4/I2COLED.c ****             #if(I2COLED_SCLK_PIN)
+ 513:.\Generated_Source\PSoC4/I2COLED.c ****                 pinsInBuf |= I2COLED_SCLK_PIN_MASK;
+ 514:.\Generated_Source\PSoC4/I2COLED.c ****             #endif /* (I2COLED_SCLK_PIN) */
+ 515:.\Generated_Source\PSoC4/I2COLED.c ****             }
+ 516:.\Generated_Source\PSoC4/I2COLED.c ****         }
+ 517:.\Generated_Source\PSoC4/I2COLED.c ****         else /* UART */
+ 518:.\Generated_Source\PSoC4/I2COLED.c ****         {
+ 519:.\Generated_Source\PSoC4/I2COLED.c ****             if(I2COLED_UART_MODE_SMARTCARD == subMode)
+ 520:.\Generated_Source\PSoC4/I2COLED.c ****             {
+ 521:.\Generated_Source\PSoC4/I2COLED.c ****                 /* SmartCard */
+ 522:.\Generated_Source\PSoC4/I2COLED.c ****                 hsiomSel[I2COLED_MISO_SDA_TX_PIN_INDEX] = I2COLED_HSIOM_UART_SEL;
+ 523:.\Generated_Source\PSoC4/I2COLED.c ****                 pinsDm  [I2COLED_MISO_SDA_TX_PIN_INDEX] = I2COLED_PIN_DM_OD_LO;
+ 524:.\Generated_Source\PSoC4/I2COLED.c ****             }
+ 525:.\Generated_Source\PSoC4/I2COLED.c ****             else /* Standard or IrDA */
+ 526:.\Generated_Source\PSoC4/I2COLED.c ****             {
+ 527:.\Generated_Source\PSoC4/I2COLED.c ****                 if(0u != (I2COLED_UART_RX_PIN_ENABLE & uartEnableMask))
+ 528:.\Generated_Source\PSoC4/I2COLED.c ****                 {
+ 529:.\Generated_Source\PSoC4/I2COLED.c ****                     hsiomSel[I2COLED_MOSI_SCL_RX_PIN_INDEX] = I2COLED_HSIOM_UART_SEL;
+ 530:.\Generated_Source\PSoC4/I2COLED.c ****                     pinsDm  [I2COLED_MOSI_SCL_RX_PIN_INDEX] = I2COLED_PIN_DM_DIG_HIZ;
+ 531:.\Generated_Source\PSoC4/I2COLED.c ****                 }
+ 532:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 533:.\Generated_Source\PSoC4/I2COLED.c ****                 if(0u != (I2COLED_UART_TX_PIN_ENABLE & uartEnableMask))
+ 534:.\Generated_Source\PSoC4/I2COLED.c ****                 {
+ 535:.\Generated_Source\PSoC4/I2COLED.c ****                     hsiomSel[I2COLED_MISO_SDA_TX_PIN_INDEX] = I2COLED_HSIOM_UART_SEL;
+ 536:.\Generated_Source\PSoC4/I2COLED.c ****                     pinsDm  [I2COLED_MISO_SDA_TX_PIN_INDEX] = I2COLED_PIN_DM_STRONG;
+ 537:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 538:.\Generated_Source\PSoC4/I2COLED.c ****                 #if(I2COLED_MISO_SDA_TX_PIN)
+ 539:.\Generated_Source\PSoC4/I2COLED.c ****                      pinsInBuf |= I2COLED_MISO_SDA_TX_PIN_MASK;
+ 540:.\Generated_Source\PSoC4/I2COLED.c ****                 #endif /* (I2COLED_MISO_SDA_TX_PIN_PIN) */
+ 541:.\Generated_Source\PSoC4/I2COLED.c ****                 }
+ 542:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 543:.\Generated_Source\PSoC4/I2COLED.c ****             #if !(I2COLED_CY_SCBIP_V0 || I2COLED_CY_SCBIP_V1)
+ 544:.\Generated_Source\PSoC4/I2COLED.c ****                 if(I2COLED_UART_MODE_STD == subMode)
+ARM GAS  C:\DOCUME~1\Owner\LOCALS~1\Temp\ccwmnyAP.s 			page 17
+
+
+ 545:.\Generated_Source\PSoC4/I2COLED.c ****                 {
+ 546:.\Generated_Source\PSoC4/I2COLED.c ****                     if(0u != (I2COLED_UART_CTS_PIN_ENABLE & uartEnableMask))
+ 547:.\Generated_Source\PSoC4/I2COLED.c ****                     {
+ 548:.\Generated_Source\PSoC4/I2COLED.c ****                         /* CTS input is multiplexed with SCLK */
+ 549:.\Generated_Source\PSoC4/I2COLED.c ****                         hsiomSel[I2COLED_SCLK_PIN_INDEX] = I2COLED_HSIOM_UART_SEL;
+ 550:.\Generated_Source\PSoC4/I2COLED.c ****                         pinsDm  [I2COLED_SCLK_PIN_INDEX] = I2COLED_PIN_DM_DIG_HIZ;
+ 551:.\Generated_Source\PSoC4/I2COLED.c ****                     }
+ 552:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 553:.\Generated_Source\PSoC4/I2COLED.c ****                     if(0u != (I2COLED_UART_RTS_PIN_ENABLE & uartEnableMask))
+ 554:.\Generated_Source\PSoC4/I2COLED.c ****                     {
+ 555:.\Generated_Source\PSoC4/I2COLED.c ****                         /* RTS output is multiplexed with SS0 */
+ 556:.\Generated_Source\PSoC4/I2COLED.c ****                         hsiomSel[I2COLED_SS0_PIN_INDEX] = I2COLED_HSIOM_UART_SEL;
+ 557:.\Generated_Source\PSoC4/I2COLED.c ****                         pinsDm  [I2COLED_SS0_PIN_INDEX] = I2COLED_PIN_DM_STRONG;
+ 558:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 559:.\Generated_Source\PSoC4/I2COLED.c ****                     #if(I2COLED_SS0_PIN)
+ 560:.\Generated_Source\PSoC4/I2COLED.c ****                         /* Disable input buffer */
+ 561:.\Generated_Source\PSoC4/I2COLED.c ****                         pinsInBuf |= I2COLED_SS0_PIN_MASK;
+ 562:.\Generated_Source\PSoC4/I2COLED.c ****                     #endif /* (I2COLED_SS0_PIN) */
+ 563:.\Generated_Source\PSoC4/I2COLED.c ****                     }
+ 564:.\Generated_Source\PSoC4/I2COLED.c ****                 }
+ 565:.\Generated_Source\PSoC4/I2COLED.c ****             #endif /* !(I2COLED_CY_SCBIP_V0 || I2COLED_CY_SCBIP_V1) */
+ 566:.\Generated_Source\PSoC4/I2COLED.c ****             }
+ 567:.\Generated_Source\PSoC4/I2COLED.c ****         }
+ 568:.\Generated_Source\PSoC4/I2COLED.c ****     #endif /* (!I2COLED_CY_SCBIP_V1) */
+ 569:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 570:.\Generated_Source\PSoC4/I2COLED.c ****     /* Configure pins: set HSIOM, DM and InputBufEnable */
+ 571:.\Generated_Source\PSoC4/I2COLED.c ****     /* Note: the DR register settings do not effect the pin output if HSIOM is other than GPIO */
+ 572:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 573:.\Generated_Source\PSoC4/I2COLED.c ****     #if(I2COLED_MOSI_SCL_RX_PIN)
+ 574:.\Generated_Source\PSoC4/I2COLED.c ****         I2COLED_SET_HSIOM_SEL(I2COLED_MOSI_SCL_RX_HSIOM_REG,
+ 575:.\Generated_Source\PSoC4/I2COLED.c ****                                        I2COLED_MOSI_SCL_RX_HSIOM_MASK,
+ 576:.\Generated_Source\PSoC4/I2COLED.c ****                                        I2COLED_MOSI_SCL_RX_HSIOM_POS,
+ 577:.\Generated_Source\PSoC4/I2COLED.c ****                                        hsiomSel[I2COLED_MOSI_SCL_RX_PIN_INDEX]);
+ 578:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 579:.\Generated_Source\PSoC4/I2COLED.c ****         I2COLED_spi_mosi_i2c_scl_uart_rx_SetDriveMode((uint8) pinsDm[I2COLED_MOSI_SCL_RX_PIN_INDEX]
+ 580:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 581:.\Generated_Source\PSoC4/I2COLED.c ****     #if (!I2COLED_CY_SCBIP_V1)
+ 582:.\Generated_Source\PSoC4/I2COLED.c ****         I2COLED_SET_INP_DIS(I2COLED_spi_mosi_i2c_scl_uart_rx_INP_DIS,
+ 583:.\Generated_Source\PSoC4/I2COLED.c ****                                      I2COLED_spi_mosi_i2c_scl_uart_rx_MASK,
+ 584:.\Generated_Source\PSoC4/I2COLED.c ****                                      (0u != (pinsInBuf & I2COLED_MOSI_SCL_RX_PIN_MASK)));
+ 585:.\Generated_Source\PSoC4/I2COLED.c ****     #endif /* (!I2COLED_CY_SCBIP_V1) */
+ 586:.\Generated_Source\PSoC4/I2COLED.c ****     #endif /* (I2COLED_MOSI_SCL_RX_PIN) */
+ 587:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 588:.\Generated_Source\PSoC4/I2COLED.c ****     #if(I2COLED_MOSI_SCL_RX_WAKE_PIN)
+ 589:.\Generated_Source\PSoC4/I2COLED.c ****         I2COLED_SET_HSIOM_SEL(I2COLED_MOSI_SCL_RX_WAKE_HSIOM_REG,
+ 590:.\Generated_Source\PSoC4/I2COLED.c ****                                        I2COLED_MOSI_SCL_RX_WAKE_HSIOM_MASK,
+ 591:.\Generated_Source\PSoC4/I2COLED.c ****                                        I2COLED_MOSI_SCL_RX_WAKE_HSIOM_POS,
+ 592:.\Generated_Source\PSoC4/I2COLED.c ****                                        hsiomSel[I2COLED_MOSI_SCL_RX_WAKE_PIN_INDEX]);
+ 593:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 594:.\Generated_Source\PSoC4/I2COLED.c ****         I2COLED_spi_mosi_i2c_scl_uart_rx_wake_SetDriveMode((uint8)
+ 595:.\Generated_Source\PSoC4/I2COLED.c ****                                                                pinsDm[I2COLED_MOSI_SCL_RX_WAKE_PIN_
+ 596:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 597:.\Generated_Source\PSoC4/I2COLED.c ****         I2COLED_SET_INP_DIS(I2COLED_spi_mosi_i2c_scl_uart_rx_wake_INP_DIS,
+ 598:.\Generated_Source\PSoC4/I2COLED.c ****                                      I2COLED_spi_mosi_i2c_scl_uart_rx_wake_MASK,
+ 599:.\Generated_Source\PSoC4/I2COLED.c ****                                      (0u != (pinsInBuf & I2COLED_MOSI_SCL_RX_WAKE_PIN_MASK)));
+ 600:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 601:.\Generated_Source\PSoC4/I2COLED.c ****          /* Set interrupt on falling edge */
+ARM GAS  C:\DOCUME~1\Owner\LOCALS~1\Temp\ccwmnyAP.s 			page 18
+
+
+ 602:.\Generated_Source\PSoC4/I2COLED.c ****         I2COLED_SET_INCFG_TYPE(I2COLED_MOSI_SCL_RX_WAKE_INTCFG_REG,
+ 603:.\Generated_Source\PSoC4/I2COLED.c ****                                         I2COLED_MOSI_SCL_RX_WAKE_INTCFG_TYPE_MASK,
+ 604:.\Generated_Source\PSoC4/I2COLED.c ****                                         I2COLED_MOSI_SCL_RX_WAKE_INTCFG_TYPE_POS,
+ 605:.\Generated_Source\PSoC4/I2COLED.c ****                                         I2COLED_INTCFG_TYPE_FALLING_EDGE);
+ 606:.\Generated_Source\PSoC4/I2COLED.c ****     #endif /* (I2COLED_MOSI_SCL_RX_WAKE_PIN) */
+ 607:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 608:.\Generated_Source\PSoC4/I2COLED.c ****     #if(I2COLED_MISO_SDA_TX_PIN)
+ 609:.\Generated_Source\PSoC4/I2COLED.c ****         I2COLED_SET_HSIOM_SEL(I2COLED_MISO_SDA_TX_HSIOM_REG,
+ 610:.\Generated_Source\PSoC4/I2COLED.c ****                                        I2COLED_MISO_SDA_TX_HSIOM_MASK,
+ 611:.\Generated_Source\PSoC4/I2COLED.c ****                                        I2COLED_MISO_SDA_TX_HSIOM_POS,
+ 612:.\Generated_Source\PSoC4/I2COLED.c ****                                        hsiomSel[I2COLED_MISO_SDA_TX_PIN_INDEX]);
+ 613:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 614:.\Generated_Source\PSoC4/I2COLED.c ****         I2COLED_spi_miso_i2c_sda_uart_tx_SetDriveMode((uint8) pinsDm[I2COLED_MISO_SDA_TX_PIN_INDEX]
+ 615:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 616:.\Generated_Source\PSoC4/I2COLED.c ****     #if (!I2COLED_CY_SCBIP_V1)
+ 617:.\Generated_Source\PSoC4/I2COLED.c ****         I2COLED_SET_INP_DIS(I2COLED_spi_miso_i2c_sda_uart_tx_INP_DIS,
+ 618:.\Generated_Source\PSoC4/I2COLED.c ****                                      I2COLED_spi_miso_i2c_sda_uart_tx_MASK,
+ 619:.\Generated_Source\PSoC4/I2COLED.c ****                                     (0u != (pinsInBuf & I2COLED_MISO_SDA_TX_PIN_MASK)));
+ 620:.\Generated_Source\PSoC4/I2COLED.c ****     #endif /* (!I2COLED_CY_SCBIP_V1) */
+ 621:.\Generated_Source\PSoC4/I2COLED.c ****     #endif /* (I2COLED_MOSI_SCL_RX_PIN) */
+ 622:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 623:.\Generated_Source\PSoC4/I2COLED.c ****     #if(I2COLED_SCLK_PIN)
+ 624:.\Generated_Source\PSoC4/I2COLED.c ****         I2COLED_SET_HSIOM_SEL(I2COLED_SCLK_HSIOM_REG, I2COLED_SCLK_HSIOM_MASK,
+ 625:.\Generated_Source\PSoC4/I2COLED.c ****                                        I2COLED_SCLK_HSIOM_POS, hsiomSel[I2COLED_SCLK_PIN_INDEX]);
+ 626:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 627:.\Generated_Source\PSoC4/I2COLED.c ****         I2COLED_spi_sclk_SetDriveMode((uint8) pinsDm[I2COLED_SCLK_PIN_INDEX]);
+ 628:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 629:.\Generated_Source\PSoC4/I2COLED.c ****         I2COLED_SET_INP_DIS(I2COLED_spi_sclk_INP_DIS,
+ 630:.\Generated_Source\PSoC4/I2COLED.c ****                                      I2COLED_spi_sclk_MASK,
+ 631:.\Generated_Source\PSoC4/I2COLED.c ****                                      (0u != (pinsInBuf & I2COLED_SCLK_PIN_MASK)));
+ 632:.\Generated_Source\PSoC4/I2COLED.c ****     #endif /* (I2COLED_SCLK_PIN) */
+ 633:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 634:.\Generated_Source\PSoC4/I2COLED.c ****     #if(I2COLED_SS0_PIN)
+ 635:.\Generated_Source\PSoC4/I2COLED.c ****         I2COLED_SET_HSIOM_SEL(I2COLED_SS0_HSIOM_REG, I2COLED_SS0_HSIOM_MASK,
+ 636:.\Generated_Source\PSoC4/I2COLED.c ****                                        I2COLED_SS0_HSIOM_POS, hsiomSel[I2COLED_SS0_PIN_INDEX]);
+ 637:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 638:.\Generated_Source\PSoC4/I2COLED.c ****         I2COLED_spi_ss0_SetDriveMode((uint8) pinsDm[I2COLED_SS0_PIN_INDEX]);
+ 639:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 640:.\Generated_Source\PSoC4/I2COLED.c ****         I2COLED_SET_INP_DIS(I2COLED_spi_ss0_INP_DIS,
+ 641:.\Generated_Source\PSoC4/I2COLED.c ****                                      I2COLED_spi_ss0_MASK,
+ 642:.\Generated_Source\PSoC4/I2COLED.c ****                                      (0u != (pinsInBuf & I2COLED_SS0_PIN_MASK)));
+ 643:.\Generated_Source\PSoC4/I2COLED.c ****     #endif /* (I2COLED_SS1_PIN) */
+ 644:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 645:.\Generated_Source\PSoC4/I2COLED.c ****     #if(I2COLED_SS1_PIN)
+ 646:.\Generated_Source\PSoC4/I2COLED.c ****         I2COLED_SET_HSIOM_SEL(I2COLED_SS1_HSIOM_REG, I2COLED_SS1_HSIOM_MASK,
+ 647:.\Generated_Source\PSoC4/I2COLED.c ****                                        I2COLED_SS1_HSIOM_POS, hsiomSel[I2COLED_SS1_PIN_INDEX]);
+ 648:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 649:.\Generated_Source\PSoC4/I2COLED.c ****         I2COLED_spi_ss1_SetDriveMode((uint8) pinsDm[I2COLED_SS1_PIN_INDEX]);
+ 650:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 651:.\Generated_Source\PSoC4/I2COLED.c ****         I2COLED_SET_INP_DIS(I2COLED_spi_ss1_INP_DIS,
+ 652:.\Generated_Source\PSoC4/I2COLED.c ****                                      I2COLED_spi_ss1_MASK,
+ 653:.\Generated_Source\PSoC4/I2COLED.c ****                                      (0u != (pinsInBuf & I2COLED_SS1_PIN_MASK)));
+ 654:.\Generated_Source\PSoC4/I2COLED.c ****     #endif /* (I2COLED_SS1_PIN) */
+ 655:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 656:.\Generated_Source\PSoC4/I2COLED.c ****     #if(I2COLED_SS2_PIN)
+ 657:.\Generated_Source\PSoC4/I2COLED.c ****         I2COLED_SET_HSIOM_SEL(I2COLED_SS2_HSIOM_REG, I2COLED_SS2_HSIOM_MASK,
+ 658:.\Generated_Source\PSoC4/I2COLED.c ****                                        I2COLED_SS2_HSIOM_POS, hsiomSel[I2COLED_SS2_PIN_INDEX]);
+ARM GAS  C:\DOCUME~1\Owner\LOCALS~1\Temp\ccwmnyAP.s 			page 19
+
+
+ 659:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 660:.\Generated_Source\PSoC4/I2COLED.c ****         I2COLED_spi_ss2_SetDriveMode((uint8) pinsDm[I2COLED_SS2_PIN_INDEX]);
+ 661:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 662:.\Generated_Source\PSoC4/I2COLED.c ****         I2COLED_SET_INP_DIS(I2COLED_spi_ss2_INP_DIS,
+ 663:.\Generated_Source\PSoC4/I2COLED.c ****                                      I2COLED_spi_ss2_MASK,
+ 664:.\Generated_Source\PSoC4/I2COLED.c ****                                      (0u != (pinsInBuf & I2COLED_SS2_PIN_MASK)));
+ 665:.\Generated_Source\PSoC4/I2COLED.c ****     #endif /* (I2COLED_SS2_PIN) */
+ 666:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 667:.\Generated_Source\PSoC4/I2COLED.c ****     #if(I2COLED_SS3_PIN)
+ 668:.\Generated_Source\PSoC4/I2COLED.c ****         I2COLED_SET_HSIOM_SEL(I2COLED_SS3_HSIOM_REG,  I2COLED_SS3_HSIOM_MASK,
+ 669:.\Generated_Source\PSoC4/I2COLED.c ****                                        I2COLED_SS3_HSIOM_POS, hsiomSel[I2COLED_SS3_PIN_INDEX]);
+ 670:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 671:.\Generated_Source\PSoC4/I2COLED.c ****         I2COLED_spi_ss3_SetDriveMode((uint8) pinsDm[I2COLED_SS3_PIN_INDEX]);
+ 672:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 673:.\Generated_Source\PSoC4/I2COLED.c ****         I2COLED_SET_INP_DIS(I2COLED_spi_ss3_INP_DIS,
+ 674:.\Generated_Source\PSoC4/I2COLED.c ****                                      I2COLED_spi_ss3_MASK,
+ 675:.\Generated_Source\PSoC4/I2COLED.c ****                                      (0u != (pinsInBuf & I2COLED_SS3_PIN_MASK)));
+ 676:.\Generated_Source\PSoC4/I2COLED.c ****     #endif /* (I2COLED_SS3_PIN) */
+ 677:.\Generated_Source\PSoC4/I2COLED.c ****     }
+ 678:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 679:.\Generated_Source\PSoC4/I2COLED.c **** #endif /* (I2COLED_SCB_MODE_UNCONFIG_CONST_CFG) */
+ 680:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 681:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 682:.\Generated_Source\PSoC4/I2COLED.c **** #if (I2COLED_CY_SCBIP_V0 || I2COLED_CY_SCBIP_V1)
+ 683:.\Generated_Source\PSoC4/I2COLED.c ****     /*******************************************************************************
+ 684:.\Generated_Source\PSoC4/I2COLED.c ****     * Function Name: I2COLED_I2CSlaveNackGeneration
+ 685:.\Generated_Source\PSoC4/I2COLED.c ****     ********************************************************************************
+ 686:.\Generated_Source\PSoC4/I2COLED.c ****     *
+ 687:.\Generated_Source\PSoC4/I2COLED.c ****     * Summary:
+ 688:.\Generated_Source\PSoC4/I2COLED.c ****     *  Sets command to generate NACK to the address or data.
+ 689:.\Generated_Source\PSoC4/I2COLED.c ****     *
+ 690:.\Generated_Source\PSoC4/I2COLED.c ****     * Parameters:
+ 691:.\Generated_Source\PSoC4/I2COLED.c ****     *  None
+ 692:.\Generated_Source\PSoC4/I2COLED.c ****     *
+ 693:.\Generated_Source\PSoC4/I2COLED.c ****     * Return:
+ 694:.\Generated_Source\PSoC4/I2COLED.c ****     *  None
+ 695:.\Generated_Source\PSoC4/I2COLED.c ****     *
+ 696:.\Generated_Source\PSoC4/I2COLED.c ****     *******************************************************************************/
+ 697:.\Generated_Source\PSoC4/I2COLED.c ****     void I2COLED_I2CSlaveNackGeneration(void)
+ 698:.\Generated_Source\PSoC4/I2COLED.c ****     {
+ 369              		.loc 1 698 0
+ 370              		.cfi_startproc
+ 371 0000 80B5     		push	{r7, lr}
+ 372              		.cfi_def_cfa_offset 8
+ 373              		.cfi_offset 7, -8
+ 374              		.cfi_offset 14, -4
+ 375 0002 00AF     		add	r7, sp, #0
+ 376              		.cfi_def_cfa_register 7
+ 699:.\Generated_Source\PSoC4/I2COLED.c ****         /* Check for EC_AM toggle condition: EC_AM and clock stretching for address are enabled */
+ 700:.\Generated_Source\PSoC4/I2COLED.c ****         if ((0u != (I2COLED_CTRL_REG & I2COLED_CTRL_EC_AM_MODE)) &&
+ 377              		.loc 1 700 0
+ 378 0004 0E4B     		ldr	r3, .L25
+ 379 0006 1A68     		ldr	r2, [r3]
+ 380 0008 8023     		mov	r3, #128
+ 381 000a 5B00     		lsl	r3, r3, #1
+ 382 000c 1340     		and	r3, r2
+ 383 000e 12D0     		beq	.L24
+ARM GAS  C:\DOCUME~1\Owner\LOCALS~1\Temp\ccwmnyAP.s 			page 20
+
+
+ 701:.\Generated_Source\PSoC4/I2COLED.c ****             (0u == (I2COLED_I2C_CTRL_REG & I2COLED_I2C_CTRL_S_NOT_READY_ADDR_NACK)))
+ 384              		.loc 1 701 0 discriminator 1
+ 385 0010 0C4B     		ldr	r3, .L25+4
+ 386 0012 1A68     		ldr	r2, [r3]
+ 387 0014 8023     		mov	r3, #128
+ 388 0016 DB01     		lsl	r3, r3, #7
+ 389 0018 1340     		and	r3, r2
+ 700:.\Generated_Source\PSoC4/I2COLED.c ****         if ((0u != (I2COLED_CTRL_REG & I2COLED_CTRL_EC_AM_MODE)) &&
+ 390              		.loc 1 700 0 discriminator 1
+ 391 001a 0CD1     		bne	.L24
+ 702:.\Generated_Source\PSoC4/I2COLED.c ****         {
+ 703:.\Generated_Source\PSoC4/I2COLED.c ****             /* Toggle EC_AM before NACK generation */
+ 704:.\Generated_Source\PSoC4/I2COLED.c ****             I2COLED_CTRL_REG &= ~I2COLED_CTRL_EC_AM_MODE;
+ 392              		.loc 1 704 0
+ 393 001c 084B     		ldr	r3, .L25
+ 394 001e 084A     		ldr	r2, .L25
+ 395 0020 1168     		ldr	r1, [r2]
+ 396 0022 094A     		ldr	r2, .L25+8
+ 397 0024 0A40     		and	r2, r1
+ 398 0026 1A60     		str	r2, [r3]
+ 705:.\Generated_Source\PSoC4/I2COLED.c ****             I2COLED_CTRL_REG |=  I2COLED_CTRL_EC_AM_MODE;
+ 399              		.loc 1 705 0
+ 400 0028 054B     		ldr	r3, .L25
+ 401 002a 054A     		ldr	r2, .L25
+ 402 002c 1268     		ldr	r2, [r2]
+ 403 002e 8021     		mov	r1, #128
+ 404 0030 4900     		lsl	r1, r1, #1
+ 405 0032 0A43     		orr	r2, r1
+ 406 0034 1A60     		str	r2, [r3]
+ 407              	.L24:
+ 706:.\Generated_Source\PSoC4/I2COLED.c ****         }
+ 707:.\Generated_Source\PSoC4/I2COLED.c **** 
+ 708:.\Generated_Source\PSoC4/I2COLED.c ****         I2COLED_I2C_SLAVE_CMD_REG = I2COLED_I2C_SLAVE_CMD_S_NACK;
+ 408              		.loc 1 708 0
+ 409 0036 054B     		ldr	r3, .L25+12
+ 410 0038 0222     		mov	r2, #2
+ 411 003a 1A60     		str	r2, [r3]
+ 709:.\Generated_Source\PSoC4/I2COLED.c ****     }
+ 412              		.loc 1 709 0
+ 413 003c BD46     		mov	sp, r7
+ 414              		@ sp needed
+ 415 003e 80BD     		pop	{r7, pc}
+ 416              	.L26:
+ 417              		.align	2
+ 418              	.L25:
+ 419 0040 00000740 		.word	1074200576
+ 420 0044 60000740 		.word	1074200672
+ 421 0048 FFFEFFFF 		.word	-257
+ 422 004c 6C000740 		.word	1074200684
+ 423              		.cfi_endproc
+ 424              	.LFE9:
+ 425              		.size	I2COLED_I2CSlaveNackGeneration, .-I2COLED_I2CSlaveNackGeneration
+ 426              		.text
+ 427              	.Letext0:
+ 428              		.file 2 ".\\Generated_Source\\PSoC4/cytypes.h"
+ 429              		.section	.debug_info,"",%progbits
+ 430              	.Ldebug_info0:
+ARM GAS  C:\DOCUME~1\Owner\LOCALS~1\Temp\ccwmnyAP.s 			page 21
+
+
+ 431 0000 E7010000 		.4byte	0x1e7
+ 432 0004 0400     		.2byte	0x4
+ 433 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 434 000a 04       		.byte	0x4
+ 435 000b 01       		.uleb128 0x1
+ 436 000c 99000000 		.4byte	.LASF33
+ 437 0010 01       		.byte	0x1
+ 438 0011 28000000 		.4byte	.LASF34
+ 439 0015 6A020000 		.4byte	.LASF35
+ 440 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 441 001d 00000000 		.4byte	0
+ 442 0021 00000000 		.4byte	.Ldebug_line0
+ 443 0025 02       		.uleb128 0x2
+ 444 0026 01       		.byte	0x1
+ 445 0027 06       		.byte	0x6
+ 446 0028 5E020000 		.4byte	.LASF0
+ 447 002c 02       		.uleb128 0x2
+ 448 002d 01       		.byte	0x1
+ 449 002e 08       		.byte	0x8
+ 450 002f 15010000 		.4byte	.LASF1
+ 451 0033 02       		.uleb128 0x2
+ 452 0034 02       		.byte	0x2
+ 453 0035 05       		.byte	0x5
+ 454 0036 21020000 		.4byte	.LASF2
+ 455 003a 02       		.uleb128 0x2
+ 456 003b 02       		.byte	0x2
+ 457 003c 07       		.byte	0x7
+ 458 003d 5E000000 		.4byte	.LASF3
+ 459 0041 02       		.uleb128 0x2
+ 460 0042 04       		.byte	0x4
+ 461 0043 05       		.byte	0x5
+ 462 0044 55020000 		.4byte	.LASF4
+ 463 0048 02       		.uleb128 0x2
+ 464 0049 04       		.byte	0x4
+ 465 004a 07       		.byte	0x7
+ 466 004b 39010000 		.4byte	.LASF5
+ 467 004f 02       		.uleb128 0x2
+ 468 0050 08       		.byte	0x8
+ 469 0051 05       		.byte	0x5
+ 470 0052 ED010000 		.4byte	.LASF6
+ 471 0056 02       		.uleb128 0x2
+ 472 0057 08       		.byte	0x8
+ 473 0058 07       		.byte	0x7
+ 474 0059 C0010000 		.4byte	.LASF7
+ 475 005d 03       		.uleb128 0x3
+ 476 005e 04       		.byte	0x4
+ 477 005f 05       		.byte	0x5
+ 478 0060 696E7400 		.ascii	"int\000"
+ 479 0064 02       		.uleb128 0x2
+ 480 0065 04       		.byte	0x4
+ 481 0066 07       		.byte	0x7
+ 482 0067 A5010000 		.4byte	.LASF8
+ 483 006b 04       		.uleb128 0x4
+ 484 006c 65010000 		.4byte	.LASF9
+ 485 0070 02       		.byte	0x2
+ 486 0071 A1       		.byte	0xa1
+ 487 0072 2C000000 		.4byte	0x2c
+ARM GAS  C:\DOCUME~1\Owner\LOCALS~1\Temp\ccwmnyAP.s 			page 22
+
+
+ 488 0076 04       		.uleb128 0x4
+ 489 0077 9E010000 		.4byte	.LASF10
+ 490 007b 02       		.byte	0x2
+ 491 007c A3       		.byte	0xa3
+ 492 007d 48000000 		.4byte	0x48
+ 493 0081 02       		.uleb128 0x2
+ 494 0082 04       		.byte	0x4
+ 495 0083 04       		.byte	0x4
+ 496 0084 93000000 		.4byte	.LASF11
+ 497 0088 02       		.uleb128 0x2
+ 498 0089 08       		.byte	0x8
+ 499 008a 04       		.byte	0x4
+ 500 008b 6B010000 		.4byte	.LASF12
+ 501 008f 02       		.uleb128 0x2
+ 502 0090 01       		.byte	0x1
+ 503 0091 08       		.byte	0x8
+ 504 0092 FB010000 		.4byte	.LASF13
+ 505 0096 05       		.uleb128 0x5
+ 506 0097 17000000 		.4byte	.LASF14
+ 507 009b 02       		.byte	0x2
+ 508 009c 4D01     		.2byte	0x14d
+ 509 009e A2000000 		.4byte	0xa2
+ 510 00a2 06       		.uleb128 0x6
+ 511 00a3 76000000 		.4byte	0x76
+ 512 00a7 05       		.uleb128 0x5
+ 513 00a8 D7010000 		.4byte	.LASF15
+ 514 00ac 02       		.byte	0x2
+ 515 00ad 5D01     		.2byte	0x15d
+ 516 00af B3000000 		.4byte	0xb3
+ 517 00b3 07       		.uleb128 0x7
+ 518 00b4 04       		.byte	0x4
+ 519 00b5 B9000000 		.4byte	0xb9
+ 520 00b9 08       		.uleb128 0x8
+ 521 00ba 02       		.uleb128 0x2
+ 522 00bb 04       		.byte	0x4
+ 523 00bc 07       		.byte	0x7
+ 524 00bd E4010000 		.4byte	.LASF16
+ 525 00c1 09       		.uleb128 0x9
+ 526 00c2 14020000 		.4byte	.LASF17
+ 527 00c6 01       		.byte	0x1
+ 528 00c7 63       		.byte	0x63
+ 529 00c8 00000000 		.4byte	.LFB0
+ 530 00cc 0C000000 		.4byte	.LFE0-.LFB0
+ 531 00d0 01       		.uleb128 0x1
+ 532 00d1 9C       		.byte	0x9c
+ 533 00d2 09       		.uleb128 0x9
+ 534 00d3 8E020000 		.4byte	.LASF18
+ 535 00d7 01       		.byte	0x1
+ 536 00d8 8F       		.byte	0x8f
+ 537 00d9 00000000 		.4byte	.LFB1
+ 538 00dd 20000000 		.4byte	.LFE1-.LFB1
+ 539 00e1 01       		.uleb128 0x1
+ 540 00e2 9C       		.byte	0x9c
+ 541 00e3 09       		.uleb128 0x9
+ 542 00e4 B2010000 		.4byte	.LASF19
+ 543 00e8 01       		.byte	0x1
+ 544 00e9 B7       		.byte	0xb7
+ARM GAS  C:\DOCUME~1\Owner\LOCALS~1\Temp\ccwmnyAP.s 			page 23
+
+
+ 545 00ea 00000000 		.4byte	.LFB2
+ 546 00ee 24000000 		.4byte	.LFE2-.LFB2
+ 547 00f2 01       		.uleb128 0x1
+ 548 00f3 9C       		.byte	0x9c
+ 549 00f4 09       		.uleb128 0x9
+ 550 00f5 51000000 		.4byte	.LASF20
+ 551 00f9 01       		.byte	0x1
+ 552 00fa D1       		.byte	0xd1
+ 553 00fb 00000000 		.4byte	.LFB3
+ 554 00ff 28000000 		.4byte	.LFE3-.LFB3
+ 555 0103 01       		.uleb128 0x1
+ 556 0104 9C       		.byte	0x9c
+ 557 0105 0A       		.uleb128 0xa
+ 558 0106 00000000 		.4byte	.LASF21
+ 559 010a 01       		.byte	0x1
+ 560 010b F2       		.byte	0xf2
+ 561 010c 00000000 		.4byte	.LFB4
+ 562 0110 34000000 		.4byte	.LFE4-.LFB4
+ 563 0114 01       		.uleb128 0x1
+ 564 0115 9C       		.byte	0x9c
+ 565 0116 37010000 		.4byte	0x137
+ 566 011a 0B       		.uleb128 0xb
+ 567 011b 4B000000 		.4byte	.LASF23
+ 568 011f 01       		.byte	0x1
+ 569 0120 F2       		.byte	0xf2
+ 570 0121 76000000 		.4byte	0x76
+ 571 0125 02       		.uleb128 0x2
+ 572 0126 91       		.byte	0x91
+ 573 0127 6C       		.sleb128 -20
+ 574 0128 0C       		.uleb128 0xc
+ 575 0129 4A020000 		.4byte	.LASF24
+ 576 012d 01       		.byte	0x1
+ 577 012e F4       		.byte	0xf4
+ 578 012f 76000000 		.4byte	0x76
+ 579 0133 02       		.uleb128 0x2
+ 580 0134 91       		.byte	0x91
+ 581 0135 74       		.sleb128 -12
+ 582 0136 00       		.byte	0
+ 583 0137 0D       		.uleb128 0xd
+ 584 0138 72010000 		.4byte	.LASF22
+ 585 013c 01       		.byte	0x1
+ 586 013d 1001     		.2byte	0x110
+ 587 013f 00000000 		.4byte	.LFB5
+ 588 0143 34000000 		.4byte	.LFE5-.LFB5
+ 589 0147 01       		.uleb128 0x1
+ 590 0148 9C       		.byte	0x9c
+ 591 0149 6C010000 		.4byte	0x16c
+ 592 014d 0E       		.uleb128 0xe
+ 593 014e 4B000000 		.4byte	.LASF23
+ 594 0152 01       		.byte	0x1
+ 595 0153 1001     		.2byte	0x110
+ 596 0155 76000000 		.4byte	0x76
+ 597 0159 02       		.uleb128 0x2
+ 598 015a 91       		.byte	0x91
+ 599 015b 6C       		.sleb128 -20
+ 600 015c 0F       		.uleb128 0xf
+ 601 015d 1D000000 		.4byte	.LASF25
+ARM GAS  C:\DOCUME~1\Owner\LOCALS~1\Temp\ccwmnyAP.s 			page 24
+
+
+ 602 0161 01       		.byte	0x1
+ 603 0162 1201     		.2byte	0x112
+ 604 0164 76000000 		.4byte	0x76
+ 605 0168 02       		.uleb128 0x2
+ 606 0169 91       		.byte	0x91
+ 607 016a 74       		.sleb128 -12
+ 608 016b 00       		.byte	0
+ 609 016c 0D       		.uleb128 0xd
+ 610 016d 71000000 		.4byte	.LASF26
+ 611 0171 01       		.byte	0x1
+ 612 0172 3301     		.2byte	0x133
+ 613 0174 00000000 		.4byte	.LFB6
+ 614 0178 18000000 		.4byte	.LFE6-.LFB6
+ 615 017c 01       		.uleb128 0x1
+ 616 017d 9C       		.byte	0x9c
+ 617 017e 92010000 		.4byte	0x192
+ 618 0182 0E       		.uleb128 0xe
+ 619 0183 89010000 		.4byte	.LASF27
+ 620 0187 01       		.byte	0x1
+ 621 0188 3301     		.2byte	0x133
+ 622 018a A7000000 		.4byte	0xa7
+ 623 018e 02       		.uleb128 0x2
+ 624 018f 91       		.byte	0x91
+ 625 0190 74       		.sleb128 -12
+ 626 0191 00       		.byte	0
+ 627 0192 10       		.uleb128 0x10
+ 628 0193 23010000 		.4byte	.LASF28
+ 629 0197 01       		.byte	0x1
+ 630 0198 4E01     		.2byte	0x14e
+ 631 019a 00000000 		.4byte	.LFB7
+ 632 019e 0E000000 		.4byte	.LFE7-.LFB7
+ 633 01a2 01       		.uleb128 0x1
+ 634 01a3 9C       		.byte	0x9c
+ 635 01a4 10       		.uleb128 0x10
+ 636 01a5 00020000 		.4byte	.LASF29
+ 637 01a9 01       		.byte	0x1
+ 638 01aa 6D01     		.2byte	0x16d
+ 639 01ac 00000000 		.4byte	.LFB8
+ 640 01b0 0C000000 		.4byte	.LFE8-.LFB8
+ 641 01b4 01       		.uleb128 0x1
+ 642 01b5 9C       		.byte	0x9c
+ 643 01b6 11       		.uleb128 0x11
+ 644 01b7 2B020000 		.4byte	.LASF30
+ 645 01bb 01       		.byte	0x1
+ 646 01bc B902     		.2byte	0x2b9
+ 647 01be 00000000 		.4byte	.LFB9
+ 648 01c2 50000000 		.4byte	.LFE9-.LFB9
+ 649 01c6 01       		.uleb128 0x1
+ 650 01c7 9C       		.byte	0x9c
+ 651 01c8 12       		.uleb128 0x12
+ 652 01c9 8E010000 		.4byte	.LASF31
+ 653 01cd 01       		.byte	0x1
+ 654 01ce 42       		.byte	0x42
+ 655 01cf 6B000000 		.4byte	0x6b
+ 656 01d3 05       		.uleb128 0x5
+ 657 01d4 03       		.byte	0x3
+ 658 01d5 00000000 		.4byte	I2COLED_initVar
+ARM GAS  C:\DOCUME~1\Owner\LOCALS~1\Temp\ccwmnyAP.s 			page 25
+
+
+ 659 01d9 12       		.uleb128 0x12
+ 660 01da 4B010000 		.4byte	.LASF32
+ 661 01de 01       		.byte	0x1
+ 662 01df 45       		.byte	0x45
+ 663 01e0 A7000000 		.4byte	0xa7
+ 664 01e4 05       		.uleb128 0x5
+ 665 01e5 03       		.byte	0x3
+ 666 01e6 00000000 		.4byte	I2COLED_customIntrHandler
+ 667 01ea 00       		.byte	0
+ 668              		.section	.debug_abbrev,"",%progbits
+ 669              	.Ldebug_abbrev0:
+ 670 0000 01       		.uleb128 0x1
+ 671 0001 11       		.uleb128 0x11
+ 672 0002 01       		.byte	0x1
+ 673 0003 25       		.uleb128 0x25
+ 674 0004 0E       		.uleb128 0xe
+ 675 0005 13       		.uleb128 0x13
+ 676 0006 0B       		.uleb128 0xb
+ 677 0007 03       		.uleb128 0x3
+ 678 0008 0E       		.uleb128 0xe
+ 679 0009 1B       		.uleb128 0x1b
+ 680 000a 0E       		.uleb128 0xe
+ 681 000b 55       		.uleb128 0x55
+ 682 000c 17       		.uleb128 0x17
+ 683 000d 11       		.uleb128 0x11
+ 684 000e 01       		.uleb128 0x1
+ 685 000f 10       		.uleb128 0x10
+ 686 0010 17       		.uleb128 0x17
+ 687 0011 00       		.byte	0
+ 688 0012 00       		.byte	0
+ 689 0013 02       		.uleb128 0x2
+ 690 0014 24       		.uleb128 0x24
+ 691 0015 00       		.byte	0
+ 692 0016 0B       		.uleb128 0xb
+ 693 0017 0B       		.uleb128 0xb
+ 694 0018 3E       		.uleb128 0x3e
+ 695 0019 0B       		.uleb128 0xb
+ 696 001a 03       		.uleb128 0x3
+ 697 001b 0E       		.uleb128 0xe
+ 698 001c 00       		.byte	0
+ 699 001d 00       		.byte	0
+ 700 001e 03       		.uleb128 0x3
+ 701 001f 24       		.uleb128 0x24
+ 702 0020 00       		.byte	0
+ 703 0021 0B       		.uleb128 0xb
+ 704 0022 0B       		.uleb128 0xb
+ 705 0023 3E       		.uleb128 0x3e
+ 706 0024 0B       		.uleb128 0xb
+ 707 0025 03       		.uleb128 0x3
+ 708 0026 08       		.uleb128 0x8
+ 709 0027 00       		.byte	0
+ 710 0028 00       		.byte	0
+ 711 0029 04       		.uleb128 0x4
+ 712 002a 16       		.uleb128 0x16
+ 713 002b 00       		.byte	0
+ 714 002c 03       		.uleb128 0x3
+ 715 002d 0E       		.uleb128 0xe
+ARM GAS  C:\DOCUME~1\Owner\LOCALS~1\Temp\ccwmnyAP.s 			page 26
+
+
+ 716 002e 3A       		.uleb128 0x3a
+ 717 002f 0B       		.uleb128 0xb
+ 718 0030 3B       		.uleb128 0x3b
+ 719 0031 0B       		.uleb128 0xb
+ 720 0032 49       		.uleb128 0x49
+ 721 0033 13       		.uleb128 0x13
+ 722 0034 00       		.byte	0
+ 723 0035 00       		.byte	0
+ 724 0036 05       		.uleb128 0x5
+ 725 0037 16       		.uleb128 0x16
+ 726 0038 00       		.byte	0
+ 727 0039 03       		.uleb128 0x3
+ 728 003a 0E       		.uleb128 0xe
+ 729 003b 3A       		.uleb128 0x3a
+ 730 003c 0B       		.uleb128 0xb
+ 731 003d 3B       		.uleb128 0x3b
+ 732 003e 05       		.uleb128 0x5
+ 733 003f 49       		.uleb128 0x49
+ 734 0040 13       		.uleb128 0x13
+ 735 0041 00       		.byte	0
+ 736 0042 00       		.byte	0
+ 737 0043 06       		.uleb128 0x6
+ 738 0044 35       		.uleb128 0x35
+ 739 0045 00       		.byte	0
+ 740 0046 49       		.uleb128 0x49
+ 741 0047 13       		.uleb128 0x13
+ 742 0048 00       		.byte	0
+ 743 0049 00       		.byte	0
+ 744 004a 07       		.uleb128 0x7
+ 745 004b 0F       		.uleb128 0xf
+ 746 004c 00       		.byte	0
+ 747 004d 0B       		.uleb128 0xb
+ 748 004e 0B       		.uleb128 0xb
+ 749 004f 49       		.uleb128 0x49
+ 750 0050 13       		.uleb128 0x13
+ 751 0051 00       		.byte	0
+ 752 0052 00       		.byte	0
+ 753 0053 08       		.uleb128 0x8
+ 754 0054 15       		.uleb128 0x15
+ 755 0055 00       		.byte	0
+ 756 0056 27       		.uleb128 0x27
+ 757 0057 19       		.uleb128 0x19
+ 758 0058 00       		.byte	0
+ 759 0059 00       		.byte	0
+ 760 005a 09       		.uleb128 0x9
+ 761 005b 2E       		.uleb128 0x2e
+ 762 005c 00       		.byte	0
+ 763 005d 3F       		.uleb128 0x3f
+ 764 005e 19       		.uleb128 0x19
+ 765 005f 03       		.uleb128 0x3
+ 766 0060 0E       		.uleb128 0xe
+ 767 0061 3A       		.uleb128 0x3a
+ 768 0062 0B       		.uleb128 0xb
+ 769 0063 3B       		.uleb128 0x3b
+ 770 0064 0B       		.uleb128 0xb
+ 771 0065 27       		.uleb128 0x27
+ 772 0066 19       		.uleb128 0x19
+ARM GAS  C:\DOCUME~1\Owner\LOCALS~1\Temp\ccwmnyAP.s 			page 27
+
+
+ 773 0067 11       		.uleb128 0x11
+ 774 0068 01       		.uleb128 0x1
+ 775 0069 12       		.uleb128 0x12
+ 776 006a 06       		.uleb128 0x6
+ 777 006b 40       		.uleb128 0x40
+ 778 006c 18       		.uleb128 0x18
+ 779 006d 9642     		.uleb128 0x2116
+ 780 006f 19       		.uleb128 0x19
+ 781 0070 00       		.byte	0
+ 782 0071 00       		.byte	0
+ 783 0072 0A       		.uleb128 0xa
+ 784 0073 2E       		.uleb128 0x2e
+ 785 0074 01       		.byte	0x1
+ 786 0075 3F       		.uleb128 0x3f
+ 787 0076 19       		.uleb128 0x19
+ 788 0077 03       		.uleb128 0x3
+ 789 0078 0E       		.uleb128 0xe
+ 790 0079 3A       		.uleb128 0x3a
+ 791 007a 0B       		.uleb128 0xb
+ 792 007b 3B       		.uleb128 0x3b
+ 793 007c 0B       		.uleb128 0xb
+ 794 007d 27       		.uleb128 0x27
+ 795 007e 19       		.uleb128 0x19
+ 796 007f 11       		.uleb128 0x11
+ 797 0080 01       		.uleb128 0x1
+ 798 0081 12       		.uleb128 0x12
+ 799 0082 06       		.uleb128 0x6
+ 800 0083 40       		.uleb128 0x40
+ 801 0084 18       		.uleb128 0x18
+ 802 0085 9742     		.uleb128 0x2117
+ 803 0087 19       		.uleb128 0x19
+ 804 0088 01       		.uleb128 0x1
+ 805 0089 13       		.uleb128 0x13
+ 806 008a 00       		.byte	0
+ 807 008b 00       		.byte	0
+ 808 008c 0B       		.uleb128 0xb
+ 809 008d 05       		.uleb128 0x5
+ 810 008e 00       		.byte	0
+ 811 008f 03       		.uleb128 0x3
+ 812 0090 0E       		.uleb128 0xe
+ 813 0091 3A       		.uleb128 0x3a
+ 814 0092 0B       		.uleb128 0xb
+ 815 0093 3B       		.uleb128 0x3b
+ 816 0094 0B       		.uleb128 0xb
+ 817 0095 49       		.uleb128 0x49
+ 818 0096 13       		.uleb128 0x13
+ 819 0097 02       		.uleb128 0x2
+ 820 0098 18       		.uleb128 0x18
+ 821 0099 00       		.byte	0
+ 822 009a 00       		.byte	0
+ 823 009b 0C       		.uleb128 0xc
+ 824 009c 34       		.uleb128 0x34
+ 825 009d 00       		.byte	0
+ 826 009e 03       		.uleb128 0x3
+ 827 009f 0E       		.uleb128 0xe
+ 828 00a0 3A       		.uleb128 0x3a
+ 829 00a1 0B       		.uleb128 0xb
+ARM GAS  C:\DOCUME~1\Owner\LOCALS~1\Temp\ccwmnyAP.s 			page 28
+
+
+ 830 00a2 3B       		.uleb128 0x3b
+ 831 00a3 0B       		.uleb128 0xb
+ 832 00a4 49       		.uleb128 0x49
+ 833 00a5 13       		.uleb128 0x13
+ 834 00a6 02       		.uleb128 0x2
+ 835 00a7 18       		.uleb128 0x18
+ 836 00a8 00       		.byte	0
+ 837 00a9 00       		.byte	0
+ 838 00aa 0D       		.uleb128 0xd
+ 839 00ab 2E       		.uleb128 0x2e
+ 840 00ac 01       		.byte	0x1
+ 841 00ad 3F       		.uleb128 0x3f
+ 842 00ae 19       		.uleb128 0x19
+ 843 00af 03       		.uleb128 0x3
+ 844 00b0 0E       		.uleb128 0xe
+ 845 00b1 3A       		.uleb128 0x3a
+ 846 00b2 0B       		.uleb128 0xb
+ 847 00b3 3B       		.uleb128 0x3b
+ 848 00b4 05       		.uleb128 0x5
+ 849 00b5 27       		.uleb128 0x27
+ 850 00b6 19       		.uleb128 0x19
+ 851 00b7 11       		.uleb128 0x11
+ 852 00b8 01       		.uleb128 0x1
+ 853 00b9 12       		.uleb128 0x12
+ 854 00ba 06       		.uleb128 0x6
+ 855 00bb 40       		.uleb128 0x40
+ 856 00bc 18       		.uleb128 0x18
+ 857 00bd 9742     		.uleb128 0x2117
+ 858 00bf 19       		.uleb128 0x19
+ 859 00c0 01       		.uleb128 0x1
+ 860 00c1 13       		.uleb128 0x13
+ 861 00c2 00       		.byte	0
+ 862 00c3 00       		.byte	0
+ 863 00c4 0E       		.uleb128 0xe
+ 864 00c5 05       		.uleb128 0x5
+ 865 00c6 00       		.byte	0
+ 866 00c7 03       		.uleb128 0x3
+ 867 00c8 0E       		.uleb128 0xe
+ 868 00c9 3A       		.uleb128 0x3a
+ 869 00ca 0B       		.uleb128 0xb
+ 870 00cb 3B       		.uleb128 0x3b
+ 871 00cc 05       		.uleb128 0x5
+ 872 00cd 49       		.uleb128 0x49
+ 873 00ce 13       		.uleb128 0x13
+ 874 00cf 02       		.uleb128 0x2
+ 875 00d0 18       		.uleb128 0x18
+ 876 00d1 00       		.byte	0
+ 877 00d2 00       		.byte	0
+ 878 00d3 0F       		.uleb128 0xf
+ 879 00d4 34       		.uleb128 0x34
+ 880 00d5 00       		.byte	0
+ 881 00d6 03       		.uleb128 0x3
+ 882 00d7 0E       		.uleb128 0xe
+ 883 00d8 3A       		.uleb128 0x3a
+ 884 00d9 0B       		.uleb128 0xb
+ 885 00da 3B       		.uleb128 0x3b
+ 886 00db 05       		.uleb128 0x5
+ARM GAS  C:\DOCUME~1\Owner\LOCALS~1\Temp\ccwmnyAP.s 			page 29
+
+
+ 887 00dc 49       		.uleb128 0x49
+ 888 00dd 13       		.uleb128 0x13
+ 889 00de 02       		.uleb128 0x2
+ 890 00df 18       		.uleb128 0x18
+ 891 00e0 00       		.byte	0
+ 892 00e1 00       		.byte	0
+ 893 00e2 10       		.uleb128 0x10
+ 894 00e3 2E       		.uleb128 0x2e
+ 895 00e4 00       		.byte	0
+ 896 00e5 03       		.uleb128 0x3
+ 897 00e6 0E       		.uleb128 0xe
+ 898 00e7 3A       		.uleb128 0x3a
+ 899 00e8 0B       		.uleb128 0xb
+ 900 00e9 3B       		.uleb128 0x3b
+ 901 00ea 05       		.uleb128 0x5
+ 902 00eb 27       		.uleb128 0x27
+ 903 00ec 19       		.uleb128 0x19
+ 904 00ed 11       		.uleb128 0x11
+ 905 00ee 01       		.uleb128 0x1
+ 906 00ef 12       		.uleb128 0x12
+ 907 00f0 06       		.uleb128 0x6
+ 908 00f1 40       		.uleb128 0x40
+ 909 00f2 18       		.uleb128 0x18
+ 910 00f3 9642     		.uleb128 0x2116
+ 911 00f5 19       		.uleb128 0x19
+ 912 00f6 00       		.byte	0
+ 913 00f7 00       		.byte	0
+ 914 00f8 11       		.uleb128 0x11
+ 915 00f9 2E       		.uleb128 0x2e
+ 916 00fa 00       		.byte	0
+ 917 00fb 3F       		.uleb128 0x3f
+ 918 00fc 19       		.uleb128 0x19
+ 919 00fd 03       		.uleb128 0x3
+ 920 00fe 0E       		.uleb128 0xe
+ 921 00ff 3A       		.uleb128 0x3a
+ 922 0100 0B       		.uleb128 0xb
+ 923 0101 3B       		.uleb128 0x3b
+ 924 0102 05       		.uleb128 0x5
+ 925 0103 27       		.uleb128 0x27
+ 926 0104 19       		.uleb128 0x19
+ 927 0105 11       		.uleb128 0x11
+ 928 0106 01       		.uleb128 0x1
+ 929 0107 12       		.uleb128 0x12
+ 930 0108 06       		.uleb128 0x6
+ 931 0109 40       		.uleb128 0x40
+ 932 010a 18       		.uleb128 0x18
+ 933 010b 9742     		.uleb128 0x2117
+ 934 010d 19       		.uleb128 0x19
+ 935 010e 00       		.byte	0
+ 936 010f 00       		.byte	0
+ 937 0110 12       		.uleb128 0x12
+ 938 0111 34       		.uleb128 0x34
+ 939 0112 00       		.byte	0
+ 940 0113 03       		.uleb128 0x3
+ 941 0114 0E       		.uleb128 0xe
+ 942 0115 3A       		.uleb128 0x3a
+ 943 0116 0B       		.uleb128 0xb
+ARM GAS  C:\DOCUME~1\Owner\LOCALS~1\Temp\ccwmnyAP.s 			page 30
+
+
+ 944 0117 3B       		.uleb128 0x3b
+ 945 0118 0B       		.uleb128 0xb
+ 946 0119 49       		.uleb128 0x49
+ 947 011a 13       		.uleb128 0x13
+ 948 011b 3F       		.uleb128 0x3f
+ 949 011c 19       		.uleb128 0x19
+ 950 011d 02       		.uleb128 0x2
+ 951 011e 18       		.uleb128 0x18
+ 952 011f 00       		.byte	0
+ 953 0120 00       		.byte	0
+ 954 0121 00       		.byte	0
+ 955              		.section	.debug_aranges,"",%progbits
+ 956 0000 64000000 		.4byte	0x64
+ 957 0004 0200     		.2byte	0x2
+ 958 0006 00000000 		.4byte	.Ldebug_info0
+ 959 000a 04       		.byte	0x4
+ 960 000b 00       		.byte	0
+ 961 000c 0000     		.2byte	0
+ 962 000e 0000     		.2byte	0
+ 963 0010 00000000 		.4byte	.LFB0
+ 964 0014 0C000000 		.4byte	.LFE0-.LFB0
+ 965 0018 00000000 		.4byte	.LFB1
+ 966 001c 20000000 		.4byte	.LFE1-.LFB1
+ 967 0020 00000000 		.4byte	.LFB2
+ 968 0024 24000000 		.4byte	.LFE2-.LFB2
+ 969 0028 00000000 		.4byte	.LFB3
+ 970 002c 28000000 		.4byte	.LFE3-.LFB3
+ 971 0030 00000000 		.4byte	.LFB4
+ 972 0034 34000000 		.4byte	.LFE4-.LFB4
+ 973 0038 00000000 		.4byte	.LFB5
+ 974 003c 34000000 		.4byte	.LFE5-.LFB5
+ 975 0040 00000000 		.4byte	.LFB6
+ 976 0044 18000000 		.4byte	.LFE6-.LFB6
+ 977 0048 00000000 		.4byte	.LFB7
+ 978 004c 0E000000 		.4byte	.LFE7-.LFB7
+ 979 0050 00000000 		.4byte	.LFB8
+ 980 0054 0C000000 		.4byte	.LFE8-.LFB8
+ 981 0058 00000000 		.4byte	.LFB9
+ 982 005c 50000000 		.4byte	.LFE9-.LFB9
+ 983 0060 00000000 		.4byte	0
+ 984 0064 00000000 		.4byte	0
+ 985              		.section	.debug_ranges,"",%progbits
+ 986              	.Ldebug_ranges0:
+ 987 0000 00000000 		.4byte	.LFB0
+ 988 0004 0C000000 		.4byte	.LFE0
+ 989 0008 00000000 		.4byte	.LFB1
+ 990 000c 20000000 		.4byte	.LFE1
+ 991 0010 00000000 		.4byte	.LFB2
+ 992 0014 24000000 		.4byte	.LFE2
+ 993 0018 00000000 		.4byte	.LFB3
+ 994 001c 28000000 		.4byte	.LFE3
+ 995 0020 00000000 		.4byte	.LFB4
+ 996 0024 34000000 		.4byte	.LFE4
+ 997 0028 00000000 		.4byte	.LFB5
+ 998 002c 34000000 		.4byte	.LFE5
+ 999 0030 00000000 		.4byte	.LFB6
+ 1000 0034 18000000 		.4byte	.LFE6
+ARM GAS  C:\DOCUME~1\Owner\LOCALS~1\Temp\ccwmnyAP.s 			page 31
+
+
+ 1001 0038 00000000 		.4byte	.LFB7
+ 1002 003c 0E000000 		.4byte	.LFE7
+ 1003 0040 00000000 		.4byte	.LFB8
+ 1004 0044 0C000000 		.4byte	.LFE8
+ 1005 0048 00000000 		.4byte	.LFB9
+ 1006 004c 50000000 		.4byte	.LFE9
+ 1007 0050 00000000 		.4byte	0
+ 1008 0054 00000000 		.4byte	0
+ 1009              		.section	.debug_line,"",%progbits
+ 1010              	.Ldebug_line0:
+ 1011 0000 26010000 		.section	.debug_str,"MS",%progbits,1
+ 1011      02004600 
+ 1011      00000201 
+ 1011      FB0E0D00 
+ 1011      01010101 
+ 1012              	.LASF21:
+ 1013 0000 4932434F 		.ascii	"I2COLED_SetRxFifoLevel\000"
+ 1013      4C45445F 
+ 1013      53657452 
+ 1013      78466966 
+ 1013      6F4C6576 
+ 1014              	.LASF14:
+ 1015 0017 72656733 		.ascii	"reg32\000"
+ 1015      3200
+ 1016              	.LASF25:
+ 1017 001d 74784669 		.ascii	"txFifoCtrl\000"
+ 1017      666F4374 
+ 1017      726C00
+ 1018              	.LASF34:
+ 1019 0028 2E5C4765 		.ascii	".\\Generated_Source\\PSoC4\\I2COLED.c\000"
+ 1019      6E657261 
+ 1019      7465645F 
+ 1019      536F7572 
+ 1019      63655C50 
+ 1020              	.LASF23:
+ 1021 004b 6C657665 		.ascii	"level\000"
+ 1021      6C00
+ 1022              	.LASF20:
+ 1023 0051 4932434F 		.ascii	"I2COLED_Stop\000"
+ 1023      4C45445F 
+ 1023      53746F70 
+ 1023      00
+ 1024              	.LASF3:
+ 1025 005e 73686F72 		.ascii	"short unsigned int\000"
+ 1025      7420756E 
+ 1025      7369676E 
+ 1025      65642069 
+ 1025      6E7400
+ 1026              	.LASF26:
+ 1027 0071 4932434F 		.ascii	"I2COLED_SetCustomInterruptHandler\000"
+ 1027      4C45445F 
+ 1027      53657443 
+ 1027      7573746F 
+ 1027      6D496E74 
+ 1028              	.LASF11:
+ 1029 0093 666C6F61 		.ascii	"float\000"
+ 1029      7400
+ARM GAS  C:\DOCUME~1\Owner\LOCALS~1\Temp\ccwmnyAP.s 			page 32
+
+
+ 1030              	.LASF33:
+ 1031 0099 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 1031      4320342E 
+ 1031      382E3420 
+ 1031      32303134 
+ 1031      30353236 
+ 1032 00cc 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
+ 1032      20726576 
+ 1032      6973696F 
+ 1032      6E203231 
+ 1032      31333538 
+ 1033 00ff 30202D66 		.ascii	"0 -ffunction-sections\000"
+ 1033      66756E63 
+ 1033      74696F6E 
+ 1033      2D736563 
+ 1033      74696F6E 
+ 1034              	.LASF1:
+ 1035 0115 756E7369 		.ascii	"unsigned char\000"
+ 1035      676E6564 
+ 1035      20636861 
+ 1035      7200
+ 1036              	.LASF28:
+ 1037 0123 4932434F 		.ascii	"I2COLED_ScbEnableIntr\000"
+ 1037      4C45445F 
+ 1037      53636245 
+ 1037      6E61626C 
+ 1037      65496E74 
+ 1038              	.LASF5:
+ 1039 0139 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1039      20756E73 
+ 1039      69676E65 
+ 1039      6420696E 
+ 1039      7400
+ 1040              	.LASF32:
+ 1041 014b 4932434F 		.ascii	"I2COLED_customIntrHandler\000"
+ 1041      4C45445F 
+ 1041      63757374 
+ 1041      6F6D496E 
+ 1041      74724861 
+ 1042              	.LASF9:
+ 1043 0165 75696E74 		.ascii	"uint8\000"
+ 1043      3800
+ 1044              	.LASF12:
+ 1045 016b 646F7562 		.ascii	"double\000"
+ 1045      6C6500
+ 1046              	.LASF22:
+ 1047 0172 4932434F 		.ascii	"I2COLED_SetTxFifoLevel\000"
+ 1047      4C45445F 
+ 1047      53657454 
+ 1047      78466966 
+ 1047      6F4C6576 
+ 1048              	.LASF27:
+ 1049 0189 66756E63 		.ascii	"func\000"
+ 1049      00
+ 1050              	.LASF31:
+ 1051 018e 4932434F 		.ascii	"I2COLED_initVar\000"
+ 1051      4C45445F 
+ARM GAS  C:\DOCUME~1\Owner\LOCALS~1\Temp\ccwmnyAP.s 			page 33
+
+
+ 1051      696E6974 
+ 1051      56617200 
+ 1052              	.LASF10:
+ 1053 019e 75696E74 		.ascii	"uint32\000"
+ 1053      333200
+ 1054              	.LASF8:
+ 1055 01a5 756E7369 		.ascii	"unsigned int\000"
+ 1055      676E6564 
+ 1055      20696E74 
+ 1055      00
+ 1056              	.LASF19:
+ 1057 01b2 4932434F 		.ascii	"I2COLED_Start\000"
+ 1057      4C45445F 
+ 1057      53746172 
+ 1057      7400
+ 1058              	.LASF7:
+ 1059 01c0 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1059      206C6F6E 
+ 1059      6720756E 
+ 1059      7369676E 
+ 1059      65642069 
+ 1060              	.LASF15:
+ 1061 01d7 63796973 		.ascii	"cyisraddress\000"
+ 1061      72616464 
+ 1061      72657373 
+ 1061      00
+ 1062              	.LASF16:
+ 1063 01e4 73697A65 		.ascii	"sizetype\000"
+ 1063      74797065 
+ 1063      00
+ 1064              	.LASF6:
+ 1065 01ed 6C6F6E67 		.ascii	"long long int\000"
+ 1065      206C6F6E 
+ 1065      6720696E 
+ 1065      7400
+ 1066              	.LASF13:
+ 1067 01fb 63686172 		.ascii	"char\000"
+ 1067      00
+ 1068              	.LASF29:
+ 1069 0200 4932434F 		.ascii	"I2COLED_ScbModeStop\000"
+ 1069      4C45445F 
+ 1069      5363624D 
+ 1069      6F646553 
+ 1069      746F7000 
+ 1070              	.LASF17:
+ 1071 0214 4932434F 		.ascii	"I2COLED_Init\000"
+ 1071      4C45445F 
+ 1071      496E6974 
+ 1071      00
+ 1072              	.LASF2:
+ 1073 0221 73686F72 		.ascii	"short int\000"
+ 1073      7420696E 
+ 1073      7400
+ 1074              	.LASF30:
+ 1075 022b 4932434F 		.ascii	"I2COLED_I2CSlaveNackGeneration\000"
+ 1075      4C45445F 
+ 1075      49324353 
+ARM GAS  C:\DOCUME~1\Owner\LOCALS~1\Temp\ccwmnyAP.s 			page 34
+
+
+ 1075      6C617665 
+ 1075      4E61636B 
+ 1076              	.LASF24:
+ 1077 024a 72784669 		.ascii	"rxFifoCtrl\000"
+ 1077      666F4374 
+ 1077      726C00
+ 1078              	.LASF4:
+ 1079 0255 6C6F6E67 		.ascii	"long int\000"
+ 1079      20696E74 
+ 1079      00
+ 1080              	.LASF0:
+ 1081 025e 7369676E 		.ascii	"signed char\000"
+ 1081      65642063 
+ 1081      68617200 
+ 1082              	.LASF35:
+ 1083 026a 433A5C64 		.ascii	"C:\\dev\\Cypress\\Testbench\\OLED.cydsn\000"
+ 1083      65765C43 
+ 1083      79707265 
+ 1083      73735C54 
+ 1083      65737462 
+ 1084              	.LASF18:
+ 1085 028e 4932434F 		.ascii	"I2COLED_Enable\000"
+ 1085      4C45445F 
+ 1085      456E6162 
+ 1085      6C6500
+ 1086              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br
